@@ -20,7 +20,7 @@ public class DBConnection {
         Connection conn = null;
         try {
             Class.forName("com.mysql.jdbc.Driver");
-            conn = (Connection) DriverManager.getConnection("jdbc:mysql://localhost:3306/missionimpossible", "root", "root");
+            conn = (Connection) DriverManager.getConnection("jdbc:mysql://localhost:3306/gravityexplore22", "root", "root");
         } catch (ClassNotFoundException | SQLException e) {
         }
         return conn;
