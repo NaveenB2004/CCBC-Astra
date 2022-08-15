@@ -86,7 +86,7 @@ public class Login extends javax.swing.JFrame {
         jLabel4.setFont(new java.awt.Font("Segoe UI", 1, 12)); // NOI18N
         jLabel4.setText("Login Password :");
 
-        type.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "User", "Admin" }));
+        type.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Moderator", "Admin" }));
 
         javax.swing.GroupLayout jPanel2Layout = new javax.swing.GroupLayout(jPanel2);
         jPanel2.setLayout(jPanel2Layout);
@@ -199,10 +199,9 @@ public class Login extends javax.swing.JFrame {
         String typen = type.getSelectedItem().toString();
         String idn = id.getText();
         String pswn = String.valueOf(psw.getPassword());
-        
         Connection con = GravityExplore22.DBConnection.connect();
 
-        if ("Admin".equals(idn)) {
+        if (typen == "Admin") {
             try {
                 Statement stmt = (Statement) con.createStatement();
                 ResultSet rs = stmt.executeQuery("SELECT * "
@@ -260,9 +259,9 @@ public class Login extends javax.swing.JFrame {
                             while (rs3.next()) {
                                 String psw = rs3.getString("password");
                                 if (pswn.equals(psw)) {
-                                    User.User userface = new User.User();
-                                    userface.logidpass(loginid);
-                                    userface.setVisible(true);
+                                    User.User usern = new User.User();
+                                    usern.logidpass(loginid);
+                                    usern.setVisible(true);
                                     this.dispose();
                                 } else {
                                     JOptionPane.showMessageDialog(this, "Invalid user name or password!");
