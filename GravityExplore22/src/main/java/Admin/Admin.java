@@ -35,23 +35,19 @@ public class Admin extends javax.swing.JFrame {
         Connection con = GravityExplore22.DBConnection.connect();
         try {
             Statement stmt = (Statement) con.createStatement();
-            ResultSet rs = stmt.executeQuery("SELECT * FROM details");
+            ResultSet rs = stmt.executeQuery("SELECT COUNT(first_name) "
+                    + "FROM details");
             while (rs.next()) {
+                int count = rs.getInt(1);
+                jLabel19.setText("" + count);
+                ResultSet rs2 = stmt.executeQuery("SELECT * FROM details");
                 DefaultTableModel model = (DefaultTableModel) jTable1.getModel();
                 model.setRowCount(0);
-                while (rs.next()) {
-                    String fnamen = rs.getString("first_name");
-                    String lnamen = rs.getString("last_name");
-                    String fullname = fnamen + " " + lnamen;
-                    Object[] row = {rs.getString("camp_id"), fullname};
+                while (rs2.next()) {
+                    Object[] row = {rs2.getString("camp_id"),
+                        rs2.getString("first_name") + " " + rs2.getString("last_name")};
                     model.addRow(row);
-                    ResultSet rs2 = stmt.executeQuery("SELECT COUNT(first_name) "
-                            + "FROM details");
-                    while (rs2.next()) {
-                        int count = rs2.getInt(1);
-                        System.out.println(count);
-                        jLabel19.setText("" + count);
-                    }
+
                 }
 
             }
@@ -86,6 +82,7 @@ public class Admin extends javax.swing.JFrame {
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
 
+        hiddencampid = new javax.swing.JLabel();
         lastlogin = new javax.swing.JLabel();
         jLabel1 = new javax.swing.JLabel();
         jScrollPane1 = new javax.swing.JScrollPane();
@@ -133,6 +130,8 @@ public class Admin extends javax.swing.JFrame {
         jLabel18 = new javax.swing.JLabel();
         jLabel19 = new javax.swing.JLabel();
 
+        hiddencampid.setText("jLabel20");
+
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
         setTitle("Admin");
 
@@ -155,6 +154,9 @@ public class Admin extends javax.swing.JFrame {
         jTable1.addMouseListener(new java.awt.event.MouseAdapter() {
             public void mouseClicked(java.awt.event.MouseEvent evt) {
                 jTable1MouseClicked(evt);
+            }
+            public void mouseEntered(java.awt.event.MouseEvent evt) {
+                jTable1MouseEntered(evt);
             }
         });
         jScrollPane1.setViewportView(jTable1);
@@ -424,7 +426,15 @@ public class Admin extends javax.swing.JFrame {
                 sbyidFocusGained(evt);
             }
         });
+        sbyid.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                sbyidActionPerformed(evt);
+            }
+        });
         sbyid.addKeyListener(new java.awt.event.KeyAdapter() {
+            public void keyPressed(java.awt.event.KeyEvent evt) {
+                sbyidKeyPressed(evt);
+            }
             public void keyTyped(java.awt.event.KeyEvent evt) {
                 sbyidKeyTyped(evt);
             }
@@ -434,6 +444,11 @@ public class Admin extends javax.swing.JFrame {
         sbyname.addFocusListener(new java.awt.event.FocusAdapter() {
             public void focusGained(java.awt.event.FocusEvent evt) {
                 sbynameFocusGained(evt);
+            }
+        });
+        sbyname.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                sbynameActionPerformed(evt);
             }
         });
         sbyname.addKeyListener(new java.awt.event.KeyAdapter() {
@@ -454,7 +469,12 @@ public class Admin extends javax.swing.JFrame {
 
         jLabel17.setText("Search by Grade :");
 
-        sbygrade.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "---", "Grade 6", "Grade 7", "Grade 8", "Grade 9", "Grade 10", "Grade 11", "Grade 12", "Grade 13" }));
+        sbygrade.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "---", "6", "7", "8", "9", "10", "11", "12", "13" }));
+        sbygrade.addFocusListener(new java.awt.event.FocusAdapter() {
+            public void focusGained(java.awt.event.FocusEvent evt) {
+                sbygradeFocusGained(evt);
+            }
+        });
         sbygrade.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 sbygradeActionPerformed(evt);
@@ -578,6 +598,7 @@ public class Admin extends javax.swing.JFrame {
                         + "FROM details "
                         + "WHERE id='" + rs.getString("id") + "'");
                 while (rs2.next()) {
+                    hiddencampid.setText(campid);
                     fname.setText(rs2.getString("first_name"));
                     lname.setText(rs2.getString("last_name"));
                     bdate.setText(rs2.getString("birth_date"));
@@ -645,28 +666,26 @@ public class Admin extends javax.swing.JFrame {
         com.mysql.jdbc.Connection con = GravityExplore22.DBConnection.connect();
         try {
             com.mysql.jdbc.Statement stmt = (com.mysql.jdbc.Statement) con.createStatement();
-
             stmt.executeUpdate("INSERT INTO details (camp_id, "
-                    + "first_name,last_name,birth_date,grade,contact,guardian_name,"
-                    + "guardian_contact,whatsapp) VALUES ('" + campidgen + "',"
-                    + "'" + fnamen + "','" + lnamen + "','" + bdaten + "',"
-                    + "'" + graden + "','" + phonen + "','" + gnamen + "'"
-                    + "'" + gphonen + "','" + whatsappn + "'");
-
+                    + "first_name,last_name,birth_date,grade,contact,guardian_name, "
+                    + "guardian_contact,whatsapp) VALUES ('" + campidgen + "', "
+                    + "'" + fnamen + "','" + lnamen + "','" + bdaten + "', "
+                    + "'" + graden + "','" + phonen + "','" + gnamen + "', "
+                    + "'" + gphonen + "','" + whatsappn + "')");
             gatefullname.setText(fnamen + " " + lnamen);
             gateid.setText(campidgen);
             JOptionPane.showMessageDialog(this, "New Member Added!");
+
             con.close();
         } catch (SQLException ex) {
+            System.out.println(ex);
         }
         autoDataGrab();
     }//GEN-LAST:event_jButton1ActionPerformed
 
     private void jButton2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton2ActionPerformed
-        // TODO add your handling code here:
-        DefaultTableModel model = (DefaultTableModel) jTable1.getModel();
-        int selectedrow = jTable1.getSelectedRow();
-        String campid = model.getValueAt(selectedrow, 0).toString();
+        String campid = hiddencampid.getText();
+        System.out.println(campid);
 
         String fnamen = fname.getText();
         String lnamen = lname.getText();
@@ -686,28 +705,28 @@ public class Admin extends javax.swing.JFrame {
             while (rs.next()) {
                 String detail_id = rs.getString("id");
                 stmt.executeUpdate("UPDATE details SET first_name='" + fnamen + "', "
-                        + "last_name='" + lnamen + "'"
+                        + "last_name='" + lnamen + "', "
                         + "birth_date='" + bdaten + "',"
                         + "grade='" + graden + "',"
-                        + "contact='" + phonen + "'"
-                        + "guardian_name='" + gnamen + "'"
-                        + "guardian_contact='" + gphonen + "'"
+                        + "contact='" + phonen + "', "
+                        + "guardian_name='" + gnamen + "', "
+                        + "guardian_contact='" + gphonen + "', "
                         + "whatsapp='" + whatsappn + "' WHERE id='" + detail_id + "'");
-
                 ResultSet rs2 = stmt.executeQuery("SELECT * "
                         + "FROM details "
                         + "WHERE id='" + detail_id + "'");
                 while (rs2.next()) {
-                    String fnamenn = rs.getString("first_name");
-                    String lnamenn = rs.getString("last_name");
-                    String fullname = fnamenn + " " + lnamenn;
-                    gatefullname.setText(fullname);
+                    gatefullname.setText(rs2.getString("first_name")
+                            + " " + rs2.getString("last_name"));
                     gateid.setText(rs2.getString("camp_id"));
+                    System.out.println("ok2!");
                 }
+                autoDataGrab();
                 JOptionPane.showMessageDialog(this, "Member details updated!");
             }
             con.close();
         } catch (SQLException ex) {
+            System.out.println(ex);
         }
     }//GEN-LAST:event_jButton2ActionPerformed
 
@@ -748,27 +767,7 @@ public class Admin extends javax.swing.JFrame {
 
     private void sbyidKeyTyped(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_sbyidKeyTyped
         // TODO add your handling code here:
-        String searchid = sbyid.getText();
 
-        Connection con = GravityExplore22.DBConnection.connect();
-        try {
-            Statement stmt = (Statement) con.createStatement();
-            ResultSet rs = stmt.executeQuery("SELECT * FROM details "
-                    + "WHERE camp_id='" + searchid + "'");
-            while (rs.next()) {
-                DefaultTableModel model = (DefaultTableModel) jTable1.getModel();
-                model.setRowCount(0);
-                while (rs.next()) {
-                    String fnamen = rs.getString("first_name");
-                    String lnamen = rs.getString("last_name");
-                    String fullname = fnamen + " " + lnamen;
-                    Object[] row = {rs.getString("camp_id"), fullname};
-                    model.addRow(row);
-                }
-            }
-            con.close();
-        } catch (SQLException ex) {
-        }
     }//GEN-LAST:event_sbyidKeyTyped
 
     private void sbynameKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_sbynameKeyPressed
@@ -777,27 +776,6 @@ public class Admin extends javax.swing.JFrame {
 
     private void sbynameKeyTyped(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_sbynameKeyTyped
         // TODO add your handling code here:
-        String searchname = sbyname.getText();
-
-        Connection con = GravityExplore22.DBConnection.connect();
-        try {
-            Statement stmt = (Statement) con.createStatement();
-            ResultSet rs = stmt.executeQuery("SELECT * FROM details "
-                    + "WHERE first_name='" + searchname + "'");
-            while (rs.next()) {
-                DefaultTableModel model = (DefaultTableModel) jTable1.getModel();
-                model.setRowCount(0);
-                while (rs.next()) {
-                    String fnamen = rs.getString("first_name");
-                    String lnamen = rs.getString("last_name");
-                    String fullname = fnamen + " " + lnamen;
-                    Object[] row = {rs.getString("camp_id"), fullname};
-                    model.addRow(row);
-                }
-            }
-            con.close();
-        } catch (SQLException ex) {
-        }
     }//GEN-LAST:event_sbynameKeyTyped
 
     private void jButton9ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton9ActionPerformed
@@ -808,38 +786,101 @@ public class Admin extends javax.swing.JFrame {
     private void sbyidFocusGained(java.awt.event.FocusEvent evt) {//GEN-FIRST:event_sbyidFocusGained
         // TODO add your handling code here:
         sbyid.setText("");
+        sbyname.setText("---");
+        sbygrade.setSelectedIndex(0);
     }//GEN-LAST:event_sbyidFocusGained
 
     private void sbynameFocusGained(java.awt.event.FocusEvent evt) {//GEN-FIRST:event_sbynameFocusGained
         // TODO add your handling code here:
         sbyname.setText("");
+        sbyid.setText("---");
+        sbygrade.setSelectedIndex(0);
     }//GEN-LAST:event_sbynameFocusGained
 
     private void sbygradeActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_sbygradeActionPerformed
         // TODO add your handling code here:
-        String searchgrade = sbygrade.getSelectedItem().toString();
+        String searchgade = sbygrade.getSelectedItem().toString();
+
+        if (!"---".equals(searchgade)) {
+            Connection con = GravityExplore22.DBConnection.connect();
+            try {
+                Statement stmt = (Statement) con.createStatement();
+                ResultSet rs = stmt.executeQuery("SELECT * FROM details "
+                        + "WHERE grade='" + searchgade + "'");
+                DefaultTableModel model = (DefaultTableModel) jTable1.getModel();
+                model.setRowCount(0);
+                while (rs.next()) {
+                    Object[] row = {rs.getString("camp_id"),
+                        rs.getString("first_name") + " " + rs.getString("last_name")};
+                    model.addRow(row);
+
+                }
+                con.close();
+            } catch (SQLException ex) {
+            }
+        } else {
+            autoDataGrab();
+        }
+    }//GEN-LAST:event_sbygradeActionPerformed
+
+    private void sbygradeFocusGained(java.awt.event.FocusEvent evt) {//GEN-FIRST:event_sbygradeFocusGained
+        // TODO add your handling code here:
+        sbyid.setText("---");
+        sbyname.setText("---");
+        sbygrade.setSelectedIndex(0);
+    }//GEN-LAST:event_sbygradeFocusGained
+
+    private void sbyidActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_sbyidActionPerformed
+        // TODO add your handling code here:
+        String searchid = sbyid.getText();
 
         Connection con = GravityExplore22.DBConnection.connect();
         try {
             Statement stmt = (Statement) con.createStatement();
             ResultSet rs = stmt.executeQuery("SELECT * FROM details "
-                    + "WHERE grade='" + searchgrade + "'");
+                    + "WHERE camp_id='" + searchid + "'");
+            DefaultTableModel model = (DefaultTableModel) jTable1.getModel();
+            model.setRowCount(0);
             while (rs.next()) {
-                DefaultTableModel model = (DefaultTableModel) jTable1.getModel();
-                model.setRowCount(0);
-                while (rs.next()) {
-                    String fnamen = rs.getString("first_name");
-                    String lnamen = rs.getString("last_name");
-                    String fullname = fnamen + " " + lnamen;
-                    Object[] row = {rs.getString("camp_id"), fullname};
-                    model.addRow(row);
-                }
+                Object[] row = {rs.getString("camp_id"),
+                    rs.getString("first_name") + " " + rs.getString("last_name")};
+                model.addRow(row);
+
             }
             con.close();
         } catch (SQLException ex) {
         }
+    }//GEN-LAST:event_sbyidActionPerformed
 
-    }//GEN-LAST:event_sbygradeActionPerformed
+    private void sbyidKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_sbyidKeyPressed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_sbyidKeyPressed
+
+    private void sbynameActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_sbynameActionPerformed
+        // TODO add your handling code here:
+        String searchname = sbyname.getText();
+
+        Connection con = GravityExplore22.DBConnection.connect();
+        try {
+            Statement stmt = (Statement) con.createStatement();
+            ResultSet rs = stmt.executeQuery("SELECT * FROM details "
+                    + "WHERE first_name='" + searchname + "'");
+            DefaultTableModel model = (DefaultTableModel) jTable1.getModel();
+            model.setRowCount(0);
+            while (rs.next()) {
+                Object[] row = {rs.getString("camp_id"),
+                    rs.getString("first_name") + " " + rs.getString("last_name")};
+                model.addRow(row);
+
+            }
+            con.close();
+        } catch (SQLException ex) {
+        }
+    }//GEN-LAST:event_sbynameActionPerformed
+
+    private void jTable1MouseEntered(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jTable1MouseEntered
+        // TODO add your handling code here:
+    }//GEN-LAST:event_jTable1MouseEntered
 
     /**
      * @param args the command line arguments
@@ -884,6 +925,7 @@ public class Admin extends javax.swing.JFrame {
     private javax.swing.JTextField gname;
     private javax.swing.JTextField gphone;
     private javax.swing.JTextField grade;
+    private javax.swing.JLabel hiddencampid;
     private javax.swing.JButton jButton1;
     private javax.swing.JButton jButton2;
     private javax.swing.JButton jButton3;
