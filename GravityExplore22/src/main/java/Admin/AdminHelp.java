@@ -4,17 +4,11 @@
  */
 package Admin;
 
-import com.itextpdf.kernel.pdf.PdfDocument;
-import com.itextpdf.kernel.pdf.PdfWriter;
 import com.mysql.jdbc.Connection;
 import com.mysql.jdbc.Statement;
 import java.awt.Color;
-import java.io.FileNotFoundException;
 import java.sql.ResultSet;
 import java.sql.SQLException;
-import java.util.logging.Level;
-import java.util.logging.Logger;
-import javax.swing.text.Document;
 
 /**
  *
