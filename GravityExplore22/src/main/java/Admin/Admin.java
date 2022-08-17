@@ -5,6 +5,7 @@
 package Admin;
 
 import com.github.javafaker.Faker;
+import java.awt.Color;
 import java.awt.Toolkit;
 import java.sql.Connection;
 import java.sql.ResultSet;
@@ -83,6 +84,7 @@ public class Admin extends javax.swing.JFrame {
     private void initComponents() {
 
         hiddencampid = new javax.swing.JLabel();
+        hiddenerrors = new javax.swing.JLabel();
         lastlogin = new javax.swing.JLabel();
         jLabel1 = new javax.swing.JLabel();
         jScrollPane1 = new javax.swing.JScrollPane();
@@ -99,7 +101,6 @@ public class Admin extends javax.swing.JFrame {
         fname = new javax.swing.JTextField();
         lname = new javax.swing.JTextField();
         bdate = new javax.swing.JTextField();
-        grade = new javax.swing.JTextField();
         phone = new javax.swing.JTextField();
         gname = new javax.swing.JTextField();
         gphone = new javax.swing.JTextField();
@@ -114,6 +115,16 @@ public class Admin extends javax.swing.JFrame {
         jLabel14 = new javax.swing.JLabel();
         jLabel20 = new javax.swing.JLabel();
         payment = new javax.swing.JTextField();
+        v1 = new javax.swing.JButton();
+        v2 = new javax.swing.JButton();
+        v3 = new javax.swing.JButton();
+        v4 = new javax.swing.JButton();
+        v5 = new javax.swing.JButton();
+        v6 = new javax.swing.JButton();
+        v7 = new javax.swing.JButton();
+        v8 = new javax.swing.JButton();
+        v9 = new javax.swing.JButton();
+        grade = new javax.swing.JComboBox<>();
         jPanel3 = new javax.swing.JPanel();
         jLabel10 = new javax.swing.JLabel();
         jLabel11 = new javax.swing.JLabel();
@@ -134,6 +145,8 @@ public class Admin extends javax.swing.JFrame {
         jButton7 = new javax.swing.JButton();
 
         hiddencampid.setText("jLabel20");
+
+        hiddenerrors.setText("jLabel21");
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
         setTitle("Admin");
@@ -187,22 +200,64 @@ public class Admin extends javax.swing.JFrame {
 
         jLabel9.setText("Whatsapp No:");
 
+        fname.addFocusListener(new java.awt.event.FocusAdapter() {
+            public void focusLost(java.awt.event.FocusEvent evt) {
+                fnameFocusLost(evt);
+            }
+        });
+        fname.addKeyListener(new java.awt.event.KeyAdapter() {
+            public void keyPressed(java.awt.event.KeyEvent evt) {
+                fnameKeyPressed(evt);
+            }
+            public void keyTyped(java.awt.event.KeyEvent evt) {
+                fnameKeyTyped(evt);
+            }
+        });
+
+        lname.addFocusListener(new java.awt.event.FocusAdapter() {
+            public void focusLost(java.awt.event.FocusEvent evt) {
+                lnameFocusLost(evt);
+            }
+        });
+
         bdate.setToolTipText("(YYYY-MM-DD)");
+        bdate.addFocusListener(new java.awt.event.FocusAdapter() {
+            public void focusLost(java.awt.event.FocusEvent evt) {
+                bdateFocusLost(evt);
+            }
+        });
         bdate.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 bdateActionPerformed(evt);
             }
         });
 
-        grade.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                gradeActionPerformed(evt);
+        phone.addFocusListener(new java.awt.event.FocusAdapter() {
+            public void focusLost(java.awt.event.FocusEvent evt) {
+                phoneFocusLost(evt);
             }
         });
 
+        gname.addFocusListener(new java.awt.event.FocusAdapter() {
+            public void focusLost(java.awt.event.FocusEvent evt) {
+                gnameFocusLost(evt);
+            }
+        });
+
+        gphone.addFocusListener(new java.awt.event.FocusAdapter() {
+            public void focusLost(java.awt.event.FocusEvent evt) {
+                gphoneFocusLost(evt);
+            }
+        });
         gphone.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 gphoneActionPerformed(evt);
+            }
+        });
+
+        whatsapp.addFocusListener(new java.awt.event.FocusAdapter() {
+            public void focusLost(java.awt.event.FocusEvent evt) {
+                whatsappFocusLost(evt);
             }
         });
 
@@ -271,6 +326,73 @@ public class Admin extends javax.swing.JFrame {
 
         jLabel20.setText("Payment (Rs.)");
 
+        payment.addFocusListener(new java.awt.event.FocusAdapter() {
+            public void focusLost(java.awt.event.FocusEvent evt) {
+                paymentFocusLost(evt);
+            }
+        });
+
+        v1.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                v1ActionPerformed(evt);
+            }
+        });
+
+        v2.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                v2ActionPerformed(evt);
+            }
+        });
+
+        v3.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                v3ActionPerformed(evt);
+            }
+        });
+
+        v4.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                v4ActionPerformed(evt);
+            }
+        });
+
+        v5.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                v5ActionPerformed(evt);
+            }
+        });
+
+        v6.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                v6ActionPerformed(evt);
+            }
+        });
+
+        v7.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                v7ActionPerformed(evt);
+            }
+        });
+
+        v8.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                v8ActionPerformed(evt);
+            }
+        });
+
+        v9.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                v9ActionPerformed(evt);
+            }
+        });
+
+        grade.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Please Select...", "6", "7", "8", "9", "10", "11", "12", "13" }));
+        grade.addFocusListener(new java.awt.event.FocusAdapter() {
+            public void focusLost(java.awt.event.FocusEvent evt) {
+                gradeFocusLost(evt);
+            }
+        });
+
         javax.swing.GroupLayout jPanel1Layout = new javax.swing.GroupLayout(jPanel1);
         jPanel1.setLayout(jPanel1Layout);
         jPanel1Layout.setHorizontalGroup(
@@ -278,8 +400,8 @@ public class Admin extends javax.swing.JFrame {
             .addGroup(jPanel1Layout.createSequentialGroup()
                 .addContainerGap()
                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel1Layout.createSequentialGroup()
-                        .addGap(0, 0, Short.MAX_VALUE)
+                    .addGroup(jPanel1Layout.createSequentialGroup()
+                        .addGap(0, 6, Short.MAX_VALUE)
                         .addComponent(jPanel2, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                     .addGroup(jPanel1Layout.createSequentialGroup()
                         .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
@@ -293,25 +415,40 @@ public class Admin extends javax.swing.JFrame {
                             .addComponent(jLabel9, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                             .addComponent(jLabel20, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                        .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addComponent(fname)
-                            .addComponent(lname)
-                            .addComponent(bdate)
-                            .addComponent(grade)
-                            .addComponent(gname, javax.swing.GroupLayout.Alignment.TRAILING)
+                        .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
                             .addGroup(jPanel1Layout.createSequentialGroup()
                                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                                    .addComponent(jLabel12)
-                                    .addComponent(jLabel13))
+                                    .addComponent(fname)
+                                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel1Layout.createSequentialGroup()
+                                        .addComponent(jLabel14)
+                                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                                        .addComponent(phone))
+                                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel1Layout.createSequentialGroup()
+                                        .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                                            .addComponent(jLabel12)
+                                            .addComponent(jLabel13))
+                                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                                        .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                                            .addComponent(gphone)
+                                            .addComponent(whatsapp)))
+                                    .addComponent(bdate, javax.swing.GroupLayout.Alignment.TRAILING)
+                                    .addComponent(lname, javax.swing.GroupLayout.Alignment.TRAILING)
+                                    .addComponent(gname, javax.swing.GroupLayout.Alignment.TRAILING)
+                                    .addComponent(grade, 0, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
                                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                                    .addComponent(gphone)
-                                    .addComponent(whatsapp)))
-                            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel1Layout.createSequentialGroup()
-                                .addComponent(jLabel14)
+                                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                                    .addComponent(v8, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.PREFERRED_SIZE, 0, Short.MAX_VALUE)
+                                    .addComponent(v7, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.PREFERRED_SIZE, 0, Short.MAX_VALUE)
+                                    .addComponent(v6, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.PREFERRED_SIZE, 0, Short.MAX_VALUE)
+                                    .addComponent(v5, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.PREFERRED_SIZE, 0, Short.MAX_VALUE)
+                                    .addComponent(v4, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.PREFERRED_SIZE, 0, Short.MAX_VALUE)
+                                    .addComponent(v3, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.PREFERRED_SIZE, 0, Short.MAX_VALUE)
+                                    .addComponent(v2, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.PREFERRED_SIZE, 0, Short.MAX_VALUE)
+                                    .addComponent(v1, javax.swing.GroupLayout.PREFERRED_SIZE, 20, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                            .addGroup(jPanel1Layout.createSequentialGroup()
+                                .addComponent(payment)
                                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                                .addComponent(phone))
-                            .addComponent(payment))))
+                                .addComponent(v9, javax.swing.GroupLayout.PREFERRED_SIZE, 20, javax.swing.GroupLayout.PREFERRED_SIZE)))))
                 .addContainerGap())
         );
         jPanel1Layout.setVerticalGroup(
@@ -320,45 +457,54 @@ public class Admin extends javax.swing.JFrame {
                 .addContainerGap()
                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jLabel2)
-                    .addComponent(fname, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addComponent(fname, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(v1, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jLabel3)
-                    .addComponent(lname, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addComponent(lname, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(v2, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jLabel4)
-                    .addComponent(bdate, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addComponent(bdate, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(v3, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jLabel5)
+                    .addComponent(v4, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                     .addComponent(grade, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jLabel6)
                     .addComponent(phone, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(jLabel14))
+                    .addComponent(jLabel14)
+                    .addComponent(v5, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jLabel7)
-                    .addComponent(gname, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addComponent(gname, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(v6, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jLabel8)
                     .addComponent(gphone, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(jLabel13))
+                    .addComponent(jLabel13)
+                    .addComponent(v7, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jLabel9)
                     .addComponent(whatsapp, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(jLabel12))
+                    .addComponent(jLabel12)
+                    .addComponent(v8, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jLabel20)
-                    .addComponent(payment, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addComponent(payment, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(v9, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                 .addComponent(jPanel2, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                .addContainerGap())
         );
 
         jPanel3.setBorder(javax.swing.BorderFactory.createTitledBorder(null, "ID Gateway :", javax.swing.border.TitledBorder.DEFAULT_JUSTIFICATION, javax.swing.border.TitledBorder.DEFAULT_POSITION, new java.awt.Font("Consolas", 0, 14))); // NOI18N
@@ -555,7 +701,7 @@ public class Admin extends javax.swing.JFrame {
                         .addComponent(jLabel1)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                         .addComponent(lastlogin, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
-                    .addComponent(jScrollPane1, javax.swing.GroupLayout.DEFAULT_SIZE, 695, Short.MAX_VALUE))
+                    .addComponent(jScrollPane1, javax.swing.GroupLayout.DEFAULT_SIZE, 689, Short.MAX_VALUE))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
                     .addComponent(jPanel1, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
@@ -574,14 +720,14 @@ public class Admin extends javax.swing.JFrame {
             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
                 .addContainerGap()
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(jScrollPane1, javax.swing.GroupLayout.DEFAULT_SIZE, 718, Short.MAX_VALUE)
+                    .addComponent(jScrollPane1, javax.swing.GroupLayout.DEFAULT_SIZE, 717, Short.MAX_VALUE)
                     .addGroup(layout.createSequentialGroup()
                         .addComponent(jPanel4, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                         .addComponent(jPanel1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                         .addComponent(jPanel3, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addGap(0, 0, Short.MAX_VALUE)))
+                        .addGap(0, 82, Short.MAX_VALUE)))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jButton6)
@@ -590,7 +736,7 @@ public class Admin extends javax.swing.JFrame {
                     .addComponent(jLabel1)
                     .addComponent(lastlogin)
                     .addComponent(jButton7))
-                .addContainerGap())
+                .addContainerGap(7, Short.MAX_VALUE))
         );
 
         pack();
@@ -623,7 +769,7 @@ public class Admin extends javax.swing.JFrame {
                     fname.setText(rs2.getString("first_name"));
                     lname.setText(rs2.getString("last_name"));
                     bdate.setText(rs2.getString("birth_date"));
-                    grade.setText(rs2.getString("grade"));
+                    grade.setSelectedItem(rs2.getString("grade"));
                     phone.setText(rs2.getString("contact"));
                     gname.setText(rs2.getString("guardian_name"));
                     gphone.setText(rs2.getString("guardian_contact"));
@@ -648,7 +794,7 @@ public class Admin extends javax.swing.JFrame {
         fname.setText("");
         lname.setText("");
         bdate.setText("");
-        grade.setText("");
+        grade.setSelectedIndex(0);
         phone.setText("");
         gname.setText("");
         gphone.setText("");
@@ -657,16 +803,13 @@ public class Admin extends javax.swing.JFrame {
         sbyid.setText("---");
         sbyname.setText("---");
         sbygrade.setSelectedIndex(0);
+        hiddencampid.setText("");
         autoDataGrab();
     }//GEN-LAST:event_jButton4ActionPerformed
 
     private void bdateActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_bdateActionPerformed
         // TODO add your handling code here:
     }//GEN-LAST:event_bdateActionPerformed
-
-    private void gradeActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_gradeActionPerformed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_gradeActionPerformed
 
     private void gphoneActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_gphoneActionPerformed
         // TODO add your handling code here:
@@ -677,7 +820,7 @@ public class Admin extends javax.swing.JFrame {
         String fnamen = fname.getText();
         String lnamen = lname.getText();
         String bdaten = bdate.getText();
-        String graden = grade.getText();
+        String graden = grade.getSelectedItem().toString();
         String phonen = phone.getText();
         String gnamen = gname.getText();
         String gphonen = gphone.getText();
@@ -714,7 +857,7 @@ public class Admin extends javax.swing.JFrame {
         String fnamen = fname.getText();
         String lnamen = lname.getText();
         String bdaten = bdate.getText();
-        String graden = grade.getText();
+        String graden = grade.getSelectedItem().toString();
         String phonen = phone.getText();
         String gnamen = gname.getText();
         String gphonen = gphone.getText();
@@ -915,6 +1058,158 @@ public class Admin extends javax.swing.JFrame {
         this.dispose();
     }//GEN-LAST:event_jButton7ActionPerformed
 
+    private void v7ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_v7ActionPerformed
+        // TODO add your handling code here:
+        JOptionPane.showMessageDialog(this, "Can only contan 0-9 with "
+                + "no spaces & special charactors. Must be contain 9 charactors eather. Ex: 771234567");
+    }//GEN-LAST:event_v7ActionPerformed
+
+    private void fnameFocusLost(java.awt.event.FocusEvent evt) {//GEN-FIRST:event_fnameFocusLost
+        // TODO add your handling code here:
+        String a1 = fname.getText();
+        if (a1.matches("[A-Z][a-z]*")) {
+            v1.setBackground(Color.green);
+        } else {
+            v1.setBackground(Color.red);
+        }
+    }//GEN-LAST:event_fnameFocusLost
+
+    private void lnameFocusLost(java.awt.event.FocusEvent evt) {//GEN-FIRST:event_lnameFocusLost
+        // TODO add your handling code here:
+        String a2 = lname.getText();
+        if (a2.matches("[A-Z][a-z]*")) {
+            v2.setBackground(Color.green);
+        } else {
+            v2.setBackground(Color.red);
+        }
+    }//GEN-LAST:event_lnameFocusLost
+
+    private void bdateFocusLost(java.awt.event.FocusEvent evt) {//GEN-FIRST:event_bdateFocusLost
+        // TODO add your handling code here:
+        String a3 = bdate.getText();
+        if (a3.matches("\\d{4}-\\d{1,2}-\\d{1,2}")) {
+            v3.setBackground(Color.green);
+        } else {
+            v3.setBackground(Color.red);
+        }
+    }//GEN-LAST:event_bdateFocusLost
+
+    private void gradeFocusLost(java.awt.event.FocusEvent evt) {//GEN-FIRST:event_gradeFocusLost
+        // TODO add your handling code here:
+        int a4 = grade.getSelectedIndex();
+        if (a4 == 0) {
+            v4.setBackground(Color.red);
+        } else {
+            v4.setBackground(Color.green);
+        }
+    }//GEN-LAST:event_gradeFocusLost
+
+    private void phoneFocusLost(java.awt.event.FocusEvent evt) {//GEN-FIRST:event_phoneFocusLost
+        // TODO add your handling code here:
+        String a5 = phone.getText();
+        if (a5.matches("^[0-9]{9}$")) {
+            v5.setBackground(Color.green);
+        } else {
+            v5.setBackground(Color.red);
+        }
+    }//GEN-LAST:event_phoneFocusLost
+
+    private void gnameFocusLost(java.awt.event.FocusEvent evt) {//GEN-FIRST:event_gnameFocusLost
+        // TODO add your handling code here:
+        String a6 = gname.getText();
+        if (a6.matches("^[a-zA-Z]([ ](?![ ])|[a-zA-Z]){3,40}[a-zA-Z]$")) {
+            v6.setBackground(Color.green);
+        } else {
+            v6.setBackground(Color.red);
+        }
+    }//GEN-LAST:event_gnameFocusLost
+
+    private void gphoneFocusLost(java.awt.event.FocusEvent evt) {//GEN-FIRST:event_gphoneFocusLost
+        // TODO add your handling code here:
+        String a7 = gphone.getText();
+        if (a7.matches("^[0-9]{9}$")) {
+            v7.setBackground(Color.green);
+        } else {
+            v7.setBackground(Color.red);
+        }
+    }//GEN-LAST:event_gphoneFocusLost
+
+    private void whatsappFocusLost(java.awt.event.FocusEvent evt) {//GEN-FIRST:event_whatsappFocusLost
+        // TODO add your handling code here:
+        String a8 = whatsapp.getText();
+        if (a8.matches("^[0-9]{9}$")) {
+            v8.setBackground(Color.green);
+        } else {
+            v8.setBackground(Color.red);
+        }
+    }//GEN-LAST:event_whatsappFocusLost
+
+    private void paymentFocusLost(java.awt.event.FocusEvent evt) {//GEN-FIRST:event_paymentFocusLost
+        // TODO add your handling code here:
+        String a9 = payment.getText();
+        if (a9.matches("^[0-9]$")) {
+            v9.setBackground(Color.green);
+        } else {
+            v9.setBackground(Color.red);
+        }
+    }//GEN-LAST:event_paymentFocusLost
+
+    private void fnameKeyTyped(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_fnameKeyTyped
+        // TODO add your handling code here:
+
+    }//GEN-LAST:event_fnameKeyTyped
+
+    private void fnameKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_fnameKeyPressed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_fnameKeyPressed
+
+    private void v1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_v1ActionPerformed
+        // TODO add your handling code here:
+        JOptionPane.showMessageDialog(this, "Can only contan A-Z and a-z with "
+                + "no spaces & special charactors. Ex: Naveen");
+    }//GEN-LAST:event_v1ActionPerformed
+
+    private void v2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_v2ActionPerformed
+        // TODO add your handling code here:
+        JOptionPane.showMessageDialog(this, "Can only contan A-Z and a-z with "
+                + "no spaces & special charactors. Ex: Naveen");
+    }//GEN-LAST:event_v2ActionPerformed
+
+    private void v3ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_v3ActionPerformed
+        // TODO add your handling code here:
+        JOptionPane.showMessageDialog(this, "Birth date format mmust be YYYY-MM-DD. "
+                + "Ex: 2022-08-18");
+    }//GEN-LAST:event_v3ActionPerformed
+
+    private void v4ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_v4ActionPerformed
+        // TODO add your handling code here:
+        JOptionPane.showMessageDialog(this, "Must be select a value (Not the first value).");
+    }//GEN-LAST:event_v4ActionPerformed
+
+    private void v5ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_v5ActionPerformed
+        // TODO add your handling code here:
+        JOptionPane.showMessageDialog(this, "Can only contan 0-9 with "
+                + "no spaces & special charactors. Must be contain 9 charactors eather. Ex: 771234567");
+    }//GEN-LAST:event_v5ActionPerformed
+
+    private void v6ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_v6ActionPerformed
+        // TODO add your handling code here:
+        JOptionPane.showMessageDialog(this, "Can only contan A-Z and a-z with "
+                + "spaces & without special charactors. Ex: Naveen Balasooriya");
+    }//GEN-LAST:event_v6ActionPerformed
+
+    private void v8ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_v8ActionPerformed
+        // TODO add your handling code here:
+        JOptionPane.showMessageDialog(this, "Can only contan 0-9 with "
+                + "no spaces & special charactors. Must be contain 9 charactors eather. Ex: 771234567");
+    }//GEN-LAST:event_v8ActionPerformed
+
+    private void v9ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_v9ActionPerformed
+        // TODO add your handling code here:
+        JOptionPane.showMessageDialog(this, "Can only contan 0-9 with "
+                + "no spaces & special charactors. Ex: 1000");
+    }//GEN-LAST:event_v9ActionPerformed
+
     /**
      * @param args the command line arguments
      */
@@ -957,8 +1252,9 @@ public class Admin extends javax.swing.JFrame {
     private javax.swing.JLabel gateid;
     private javax.swing.JTextField gname;
     private javax.swing.JTextField gphone;
-    private javax.swing.JTextField grade;
+    private javax.swing.JComboBox<String> grade;
     private javax.swing.JLabel hiddencampid;
+    private javax.swing.JLabel hiddenerrors;
     private javax.swing.JButton jButton1;
     private javax.swing.JButton jButton2;
     private javax.swing.JButton jButton3;
@@ -1000,6 +1296,15 @@ public class Admin extends javax.swing.JFrame {
     private javax.swing.JComboBox<String> sbygrade;
     private javax.swing.JTextField sbyid;
     private javax.swing.JTextField sbyname;
+    private javax.swing.JButton v1;
+    private javax.swing.JButton v2;
+    private javax.swing.JButton v3;
+    private javax.swing.JButton v4;
+    private javax.swing.JButton v5;
+    private javax.swing.JButton v6;
+    private javax.swing.JButton v7;
+    private javax.swing.JButton v8;
+    private javax.swing.JButton v9;
     private javax.swing.JTextField whatsapp;
     // End of variables declaration//GEN-END:variables
 }

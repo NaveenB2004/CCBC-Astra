@@ -9,8 +9,6 @@ import com.mysql.jdbc.Statement;
 import java.awt.Color;
 import java.sql.ResultSet;
 import java.sql.SQLException;
-import java.text.SimpleDateFormat;
-import java.util.Date;
 import javax.swing.JFrame;
 import javax.swing.JOptionPane;
 
