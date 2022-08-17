@@ -850,13 +850,13 @@ public class Admin extends javax.swing.JFrame {
                     + "'" + gphonen + "','" + whatsappn + "','" + paymentn + "')");
             gatefullname.setText(fnamen + " " + lnamen);
             gateid.setText(campidgen);
+            autoDataGrab();
             JOptionPane.showMessageDialog(this, "New Member Added!");
 
             con.close();
         } catch (SQLException ex) {
-            System.out.println(ex);
         }
-        autoDataGrab();
+        
     }//GEN-LAST:event_jButton1ActionPerformed
 
     private void jButton2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton2ActionPerformed
@@ -904,7 +904,6 @@ public class Admin extends javax.swing.JFrame {
             }
             con.close();
         } catch (SQLException ex) {
-            System.out.println(ex);
         }
     }//GEN-LAST:event_jButton2ActionPerformed
 
@@ -1156,7 +1155,7 @@ public class Admin extends javax.swing.JFrame {
     private void paymentFocusLost(java.awt.event.FocusEvent evt) {//GEN-FIRST:event_paymentFocusLost
         // TODO add your handling code here:
         String a9 = payment.getText();
-        if (a9.matches("^[0-9]$")) {
+        if (a9.matches("^[0-9]{3,4}$")) {
             v9.setBackground(Color.green);
         } else {
             v9.setBackground(Color.red);

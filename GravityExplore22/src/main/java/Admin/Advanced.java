@@ -250,7 +250,8 @@ public class Advanced extends javax.swing.JFrame {
                 con.close();
             } catch (SQLException ex) {
             }
-
+            connectioncheck();
+            getmemberdetails();
             JOptionPane.showMessageDialog(this, "All Members Deleted!");
         } else {
         }
