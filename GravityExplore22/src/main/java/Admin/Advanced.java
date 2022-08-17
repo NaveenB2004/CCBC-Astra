@@ -7,9 +7,9 @@ package Admin;
 import com.mysql.jdbc.Connection;
 import com.mysql.jdbc.Statement;
 import java.awt.Color;
+import java.awt.Toolkit;
 import java.sql.ResultSet;
 import java.sql.SQLException;
-import javax.swing.JFrame;
 import javax.swing.JOptionPane;
 
 /**
@@ -23,22 +23,9 @@ public class Advanced extends javax.swing.JFrame {
      */
     public Advanced() {
         initComponents();
+        this.setIconImage(Toolkit.getDefaultToolkit().getImage(getClass().getResource("/Imgs/IconImg.png")));
         connectioncheck();
         getmemberdetails();
-    }
-
-    public void logidpass(String loginid) {
-        java.sql.Connection con = GravityExplore22.DBConnection.connect();
-        try {
-            java.sql.Statement stmt = (java.sql.Statement) con.createStatement();
-            ResultSet rs = stmt.executeQuery("SELECT password FROM login "
-                    + "WHERE id='" + loginid + "'");
-            while (rs.next()) {
-                logpass.setText(rs.getString("password"));
-            }
-            con.close();
-        } catch (SQLException ex) {
-        }
     }
 
     private void connectioncheck() {
@@ -94,7 +81,6 @@ public class Advanced extends javax.swing.JFrame {
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
 
-        logpass = new javax.swing.JLabel();
         jPanel1 = new javax.swing.JPanel();
         colorshow = new javax.swing.JTextField();
         jPanel2 = new javax.swing.JPanel();
@@ -105,8 +91,6 @@ public class Advanced extends javax.swing.JFrame {
         jLabel3 = new javax.swing.JLabel();
         jLabel4 = new javax.swing.JLabel();
         jButton3 = new javax.swing.JButton();
-
-        logpass.setText("jLabel5");
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
         setTitle("Advanced");
@@ -250,32 +234,25 @@ public class Advanced extends javax.swing.JFrame {
 
     private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
         // TODO add your handling code here:
-        String savedpass = logpass.getText();
-        JFrame f1 = new JFrame();
-        String username = JOptionPane.showInputDialog(f1, "Enter Account Password:");
-        if (username == savedpass) {
-            int deleteitem = JOptionPane.showConfirmDialog(null, "Confirm to delete All Members!",
-                    "Warning", JOptionPane.YES_NO_OPTION);
-            if (deleteitem == JOptionPane.YES_OPTION) {
+        int deleteitem = JOptionPane.showConfirmDialog(null, "Confirm to delete All Members!",
+                "Warning", JOptionPane.YES_NO_OPTION);
+        if (deleteitem == JOptionPane.YES_OPTION) {
 
-                com.mysql.jdbc.Connection con = GravityExplore22.DBConnection.connect();
-                try {
-                    com.mysql.jdbc.Statement stmt = (com.mysql.jdbc.Statement) con.createStatement();
-                    ResultSet rs = stmt.executeQuery("SELECT * "
-                            + "FROM details");
-                    while (rs.next()) {
+            com.mysql.jdbc.Connection con = GravityExplore22.DBConnection.connect();
+            try {
+                com.mysql.jdbc.Statement stmt = (com.mysql.jdbc.Statement) con.createStatement();
+                ResultSet rs = stmt.executeQuery("SELECT * "
+                        + "FROM details");
+                while (rs.next()) {
 
-                        stmt.executeUpdate("DELETE FROM details");
-                    }
-                    con.close();
-                } catch (SQLException ex) {
+                    stmt.executeUpdate("DELETE FROM details");
                 }
-
-                JOptionPane.showMessageDialog(this, "All Members Deleted!");
-            } else {
+                con.close();
+            } catch (SQLException ex) {
             }
+
+            JOptionPane.showMessageDialog(this, "All Members Deleted!");
         } else {
-            JOptionPane.showMessageDialog(this, "Invalid Password!");
         }
     }//GEN-LAST:event_jButton1ActionPerformed
 
@@ -326,6 +303,5 @@ public class Advanced extends javax.swing.JFrame {
     private javax.swing.JPanel jPanel1;
     private javax.swing.JPanel jPanel2;
     private javax.swing.JPanel jPanel3;
-    private javax.swing.JLabel logpass;
     // End of variables declaration//GEN-END:variables
 }
