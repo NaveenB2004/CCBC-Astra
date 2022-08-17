@@ -30,7 +30,7 @@ public class Admin extends javax.swing.JFrame {
         autoDataGrab();
         this.setIconImage(Toolkit.getDefaultToolkit().getImage(getClass().getResource("/Imgs/IconImg.png")));
     }
-    
+
     public void autoDataGrab() {
         Connection con = GravityExplore22.DBConnection.connect();
         try {
@@ -47,15 +47,15 @@ public class Admin extends javax.swing.JFrame {
                     Object[] row = {rs2.getString("camp_id"),
                         rs2.getString("first_name") + " " + rs2.getString("last_name")};
                     model.addRow(row);
-                    
+
                 }
-                
+
             }
             con.close();
         } catch (SQLException ex) {
         }
     }
-    
+
     public void logidpass(String loginid) {
         Connection con = GravityExplore22.DBConnection.connect();
         try {
@@ -112,6 +112,8 @@ public class Admin extends javax.swing.JFrame {
         jLabel12 = new javax.swing.JLabel();
         jLabel13 = new javax.swing.JLabel();
         jLabel14 = new javax.swing.JLabel();
+        jLabel20 = new javax.swing.JLabel();
+        payment = new javax.swing.JTextField();
         jPanel3 = new javax.swing.JPanel();
         jLabel10 = new javax.swing.JLabel();
         jLabel11 = new javax.swing.JLabel();
@@ -267,6 +269,8 @@ public class Admin extends javax.swing.JFrame {
 
         jLabel14.setText("+94");
 
+        jLabel20.setText("Payment");
+
         javax.swing.GroupLayout jPanel1Layout = new javax.swing.GroupLayout(jPanel1);
         jPanel1.setLayout(jPanel1Layout);
         jPanel1Layout.setHorizontalGroup(
@@ -275,6 +279,9 @@ public class Admin extends javax.swing.JFrame {
                 .addContainerGap()
                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel1Layout.createSequentialGroup()
+                        .addGap(0, 0, Short.MAX_VALUE)
+                        .addComponent(jPanel2, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addGroup(jPanel1Layout.createSequentialGroup()
                         .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
                             .addComponent(jLabel2, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                             .addComponent(jLabel3, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
@@ -283,7 +290,8 @@ public class Admin extends javax.swing.JFrame {
                             .addComponent(jLabel6, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                             .addComponent(jLabel7, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                             .addComponent(jLabel8, javax.swing.GroupLayout.DEFAULT_SIZE, 150, Short.MAX_VALUE)
-                            .addComponent(jLabel9, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                            .addComponent(jLabel9, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                            .addComponent(jLabel20, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                         .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                             .addComponent(fname)
@@ -302,10 +310,8 @@ public class Admin extends javax.swing.JFrame {
                             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel1Layout.createSequentialGroup()
                                 .addComponent(jLabel14)
                                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                                .addComponent(phone))))
-                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel1Layout.createSequentialGroup()
-                        .addGap(0, 0, Short.MAX_VALUE)
-                        .addComponent(jPanel2, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                                .addComponent(phone))
+                            .addComponent(payment))))
                 .addContainerGap())
         );
         jPanel1Layout.setVerticalGroup(
@@ -346,7 +352,11 @@ public class Admin extends javax.swing.JFrame {
                     .addComponent(jLabel9)
                     .addComponent(whatsapp, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(jLabel12))
-                .addGap(18, 18, 18)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(jLabel20)
+                    .addComponent(payment, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                 .addComponent(jPanel2, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
@@ -525,8 +535,7 @@ public class Admin extends javax.swing.JFrame {
 
         jLabel19.setText("---");
 
-        jButton7.setFont(new java.awt.Font("Georgia", 2, 12)); // NOI18N
-        jButton7.setText("i");
+        jButton7.setText("Advanced");
         jButton7.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 jButton7ActionPerformed(evt);
@@ -541,8 +550,8 @@ public class Admin extends javax.swing.JFrame {
                 .addContainerGap()
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(layout.createSequentialGroup()
-                        .addComponent(jButton7, javax.swing.GroupLayout.PREFERRED_SIZE, 50, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                        .addComponent(jButton7)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                         .addComponent(jLabel1)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                         .addComponent(lastlogin, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
@@ -592,19 +601,19 @@ public class Admin extends javax.swing.JFrame {
         // TODO add your handling code here:
         gatefullname.setText("---");
         gateid.setText("---");
-        
+
         DefaultTableModel model = (DefaultTableModel) jTable1.getModel();
         int selectedrow = jTable1.getSelectedRow();
         String campid = model.getValueAt(selectedrow, 0).toString();
-        
+
         com.mysql.jdbc.Connection con = GravityExplore22.DBConnection.connect();
-        
+
         try {
             com.mysql.jdbc.Statement stmt = (com.mysql.jdbc.Statement) con.createStatement();
             ResultSet rs = stmt.executeQuery("SELECT id "
                     + "FROM details "
                     + "WHERE camp_id='" + campid + "'");
-            
+
             while (rs.next()) {
                 ResultSet rs2 = stmt.executeQuery("SELECT * "
                         + "FROM details "
@@ -619,6 +628,7 @@ public class Admin extends javax.swing.JFrame {
                     gname.setText(rs2.getString("guardian_name"));
                     gphone.setText(rs2.getString("guardian_contact"));
                     whatsapp.setText(rs2.getString("whatsapp"));
+                    payment.setText(rs2.getString("payment"));
                 }
             }
             con.close();
@@ -643,6 +653,7 @@ public class Admin extends javax.swing.JFrame {
         gname.setText("");
         gphone.setText("");
         whatsapp.setText("");
+        payment.setText("");
         sbyid.setText("---");
         sbyname.setText("---");
         sbygrade.setSelectedIndex(0);
@@ -671,23 +682,24 @@ public class Admin extends javax.swing.JFrame {
         String gnamen = gname.getText();
         String gphonen = gphone.getText();
         String whatsappn = whatsapp.getText();
-        
+        String paymentn = payment.getText();
+
         Faker faker = new Faker();
         String campidgen = faker.number().digits(5);
-        
+
         com.mysql.jdbc.Connection con = GravityExplore22.DBConnection.connect();
         try {
             com.mysql.jdbc.Statement stmt = (com.mysql.jdbc.Statement) con.createStatement();
             stmt.executeUpdate("INSERT INTO details (camp_id, "
                     + "first_name,last_name,birth_date,grade,contact,guardian_name, "
-                    + "guardian_contact,whatsapp) VALUES ('" + campidgen + "', "
+                    + "guardian_contact,whatsapp,payment) VALUES ('" + campidgen + "', "
                     + "'" + fnamen + "','" + lnamen + "','" + bdaten + "', "
                     + "'" + graden + "','" + phonen + "','" + gnamen + "', "
-                    + "'" + gphonen + "','" + whatsappn + "')");
+                    + "'" + gphonen + "','" + whatsappn + "','" + paymentn + "')");
             gatefullname.setText(fnamen + " " + lnamen);
             gateid.setText(campidgen);
             JOptionPane.showMessageDialog(this, "New Member Added!");
-            
+
             con.close();
         } catch (SQLException ex) {
             System.out.println(ex);
@@ -698,7 +710,7 @@ public class Admin extends javax.swing.JFrame {
     private void jButton2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton2ActionPerformed
         String campid = hiddencampid.getText();
         System.out.println(campid);
-        
+
         String fnamen = fname.getText();
         String lnamen = lname.getText();
         String bdaten = bdate.getText();
@@ -707,7 +719,8 @@ public class Admin extends javax.swing.JFrame {
         String gnamen = gname.getText();
         String gphonen = gphone.getText();
         String whatsappn = whatsapp.getText();
-        
+        String paymentn = payment.getText();
+
         com.mysql.jdbc.Connection con = GravityExplore22.DBConnection.connect();
         try {
             com.mysql.jdbc.Statement stmt = (com.mysql.jdbc.Statement) con.createStatement();
@@ -723,7 +736,8 @@ public class Admin extends javax.swing.JFrame {
                         + "contact='" + phonen + "', "
                         + "guardian_name='" + gnamen + "', "
                         + "guardian_contact='" + gphonen + "', "
-                        + "whatsapp='" + whatsappn + "' WHERE id='" + detail_id + "'");
+                        + "whatsapp='" + whatsappn + "', "
+                        + "payment='" + paymentn + "' WHERE id='" + detail_id + "'");
                 ResultSet rs2 = stmt.executeQuery("SELECT * "
                         + "FROM details "
                         + "WHERE id='" + detail_id + "'");
@@ -747,7 +761,7 @@ public class Admin extends javax.swing.JFrame {
         DefaultTableModel model = (DefaultTableModel) jTable1.getModel();
         int selectedrow = jTable1.getSelectedRow();
         String campid = model.getValueAt(selectedrow, 0).toString();
-        
+
         com.mysql.jdbc.Connection con = GravityExplore22.DBConnection.connect();
         try {
             com.mysql.jdbc.Statement stmt = (com.mysql.jdbc.Statement) con.createStatement();
@@ -812,7 +826,7 @@ public class Admin extends javax.swing.JFrame {
     private void sbygradeActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_sbygradeActionPerformed
         // TODO add your handling code here:
         String searchgade = sbygrade.getSelectedItem().toString();
-        
+
         if (!"---".equals(searchgade)) {
             Connection con = GravityExplore22.DBConnection.connect();
             try {
@@ -825,7 +839,7 @@ public class Admin extends javax.swing.JFrame {
                     Object[] row = {rs.getString("camp_id"),
                         rs.getString("first_name") + " " + rs.getString("last_name")};
                     model.addRow(row);
-                    
+
                 }
                 con.close();
             } catch (SQLException ex) {
@@ -845,7 +859,7 @@ public class Admin extends javax.swing.JFrame {
     private void sbyidActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_sbyidActionPerformed
         // TODO add your handling code here:
         String searchid = sbyid.getText();
-        
+
         Connection con = GravityExplore22.DBConnection.connect();
         try {
             Statement stmt = (Statement) con.createStatement();
@@ -857,7 +871,7 @@ public class Admin extends javax.swing.JFrame {
                 Object[] row = {rs.getString("camp_id"),
                     rs.getString("first_name") + " " + rs.getString("last_name")};
                 model.addRow(row);
-                
+
             }
             con.close();
         } catch (SQLException ex) {
@@ -871,7 +885,7 @@ public class Admin extends javax.swing.JFrame {
     private void sbynameActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_sbynameActionPerformed
         // TODO add your handling code here:
         String searchname = sbyname.getText();
-        
+
         Connection con = GravityExplore22.DBConnection.connect();
         try {
             Statement stmt = (Statement) con.createStatement();
@@ -883,7 +897,7 @@ public class Admin extends javax.swing.JFrame {
                 Object[] row = {rs.getString("camp_id"),
                     rs.getString("first_name") + " " + rs.getString("last_name")};
                 model.addRow(row);
-                
+
             }
             con.close();
         } catch (SQLException ex) {
@@ -896,8 +910,9 @@ public class Admin extends javax.swing.JFrame {
 
     private void jButton7ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton7ActionPerformed
         // TODO add your handling code here:
-        AdminHelp help = new AdminHelp();
+        Advanced help = new Advanced();
         help.setVisible(true);
+        this.dispose();
     }//GEN-LAST:event_jButton7ActionPerformed
 
     /**
@@ -964,6 +979,7 @@ public class Admin extends javax.swing.JFrame {
     private javax.swing.JLabel jLabel18;
     private javax.swing.JLabel jLabel19;
     private javax.swing.JLabel jLabel2;
+    private javax.swing.JLabel jLabel20;
     private javax.swing.JLabel jLabel3;
     private javax.swing.JLabel jLabel4;
     private javax.swing.JLabel jLabel5;
@@ -979,6 +995,7 @@ public class Admin extends javax.swing.JFrame {
     private javax.swing.JTable jTable1;
     private javax.swing.JLabel lastlogin;
     private javax.swing.JTextField lname;
+    private javax.swing.JTextField payment;
     private javax.swing.JTextField phone;
     private javax.swing.JComboBox<String> sbygrade;
     private javax.swing.JTextField sbyid;
