@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Generation Time: Aug 15, 2022 at 08:59 PM
+-- Generation Time: Aug 17, 2022 at 11:41 PM
 -- Server version: 10.4.24-MariaDB
 -- PHP Version: 8.1.6
 
@@ -54,16 +54,19 @@ CREATE TABLE `details` (
   `contact` int(9) DEFAULT NULL,
   `guardian_name` varchar(40) NOT NULL,
   `guardian_contact` int(9) NOT NULL,
-  `whatsapp` int(9) DEFAULT NULL
+  `whatsapp` int(9) DEFAULT NULL,
+  `payment` int(6) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
 
 --
 -- Dumping data for table `details`
 --
 
-INSERT INTO `details` (`id`, `camp_id`, `first_name`, `last_name`, `birth_date`, `grade`, `contact`, `guardian_name`, `guardian_contact`, `whatsapp`) VALUES
-(2, 35153, 'Naveen', 'Balasooriya', '2004-06-17', 8, 779935421, 'Naveen Balasooriya', 779935421, 779935421),
-(5, 47874, 'Anupama', 'Balasooriya', '2004-06-17', 11, 779935421, 'Naveen Balasooriya', 779935421, 779935421);
+INSERT INTO `details` (`id`, `camp_id`, `first_name`, `last_name`, `birth_date`, `grade`, `contact`, `guardian_name`, `guardian_contact`, `whatsapp`, `payment`) VALUES
+(2, 35153, 'Naveen', 'Balasooriya', '2004-06-17', 8, 779935421, 'Naveen Balasooriya', 779935421, 779935421, 1000),
+(5, 47874, 'Anupama', 'Balasooriya', '2004-06-17', 11, 779935421, 'Naveen Balasooriya', 779935421, 779935421, 999),
+(6, 52501, 'Naveen', 'Balasooriya', '2004-06-17', 8, 779935421, 'Naveen Balasooriya', 779935421, 779935421, 1000),
+(7, 75724, 'Anupama', 'Efdg', '2004-06-17', 11, 779935421, 'Naveen Balasooriya', 779935421, 779935421, 999);
 
 -- --------------------------------------------------------
 
@@ -97,7 +100,7 @@ CREATE TABLE `login` (
 --
 
 INSERT INTO `login` (`id`, `user_name`, `password`, `type`, `last_login`) VALUES
-(1, 'admin', 'admin', 'Admin', '2022-08-15 16:18:24'),
+(1, 'admin', 'admin', 'Admin', '2022-08-18 00:54:46'),
 (2, 'user', 'user', 'Moderator', '2022-08-15 12:35:49');
 
 --
@@ -130,7 +133,7 @@ ALTER TABLE `login`
 -- AUTO_INCREMENT for table `details`
 --
 ALTER TABLE `details`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=6;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=8;
 
 --
 -- AUTO_INCREMENT for table `events`
