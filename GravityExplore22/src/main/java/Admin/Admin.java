@@ -269,7 +269,7 @@ public class Admin extends javax.swing.JFrame {
 
         jLabel14.setText("+94");
 
-        jLabel20.setText("Payment");
+        jLabel20.setText("Payment (Rs.)");
 
         javax.swing.GroupLayout jPanel1Layout = new javax.swing.GroupLayout(jPanel1);
         jPanel1.setLayout(jPanel1Layout);

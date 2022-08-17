@@ -221,6 +221,8 @@ public class Login extends javax.swing.JFrame {
                             while (rs3.next()) {
                                 String psw = rs3.getString("password");
                                 if (pswn.equals(psw)) {
+                                    Admin.Advanced advanced = new Admin.Advanced();
+                                    advanced.logidpass(loginid);
                                     Admin.Admin admin = new Admin.Admin();
                                     admin.logidpass(loginid);
                                     admin.setVisible(true);
