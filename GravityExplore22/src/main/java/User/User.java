@@ -107,7 +107,7 @@ public class User extends javax.swing.JFrame {
                         ResultSet rs4 = stmt.executeQuery("SELECT SUM(payment)"
                                 + " as totalpayment from details");
                         while (rs4.next()) {
-                            jLabel18.setText(rs.getString("totalpayment"));
+                            jLabel18.setText(rs4.getString("totalpayment"));
                         }
                     }
                 }
@@ -549,12 +549,11 @@ public class User extends javax.swing.JFrame {
                     .addGroup(layout.createSequentialGroup()
                         .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING, false)
                             .addComponent(jButton4, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                            .addGroup(layout.createSequentialGroup()
+                            .addGroup(javax.swing.GroupLayout.Alignment.LEADING, layout.createSequentialGroup()
                                 .addComponent(jPanel4, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                                .addComponent(jPanel5, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                .addGap(212, 212, 212)))
-                        .addGap(0, 0, Short.MAX_VALUE)))
+                                .addComponent(jPanel5, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                        .addGap(0, 639, Short.MAX_VALUE)))
                 .addContainerGap())
         );
         layout.setVerticalGroup(
