@@ -104,8 +104,11 @@ public class User extends javax.swing.JFrame {
                         int count23 = count - count3;
                         jLabel7.setText("" + count3);
                         jLabel14.setText("" + count23);
-                        ResultSet rs4 = stmt.executeQuery("SELECT COUNT(evt_baj) "
-                                + "FROM details WHERE evt_baj=1");
+                        ResultSet rs4 = stmt.executeQuery("SELECT SUM(payment)"
+                                + " as totalpayment from details");
+                        while (rs4.next()) {
+                            jLabel18.setText(rs.getString("totalpayment"));
+                        }
                     }
                 }
             }

@@ -627,6 +627,24 @@ public class MemberDetails extends javax.swing.JFrame {
                     con.close();
                 } catch (SQLException ex) {
                 }
+            } else if (!jCheckBox1.isSelected() && !jCheckBox2.isSelected()) {
+                java.sql.Connection con = GravityExplore22.DBConnection.connect();
+                try {
+                    java.sql.Statement stmt = (java.sql.Statement) con.createStatement();
+                    ResultSet rs = stmt.executeQuery("SELECT * "
+                            + "FROM details"
+                            + "WHERE evt_entrance=0 AND evt_tea=0");
+                    DefaultTableModel model = (DefaultTableModel) jTable1.getModel();
+                    model.setRowCount(0);
+                    while (rs.next()) {
+                        Object[] row = {rs.getString("camp_id"),
+                            rs.getString("first_name") + " " + rs.getString("last_name"),
+                            rs.getString("grade")};
+                        model.addRow(row);
+                    }
+                    con.close();
+                } catch (SQLException ex) {
+                }
             }
 
         } else {
@@ -649,6 +667,24 @@ public class MemberDetails extends javax.swing.JFrame {
                 } catch (SQLException ex) {
                 }
             } else if (jCheckBox1.isSelected() && !jCheckBox2.isSelected()) {
+                java.sql.Connection con = GravityExplore22.DBConnection.connect();
+                try {
+                    java.sql.Statement stmt = (java.sql.Statement) con.createStatement();
+                    ResultSet rs = stmt.executeQuery("SELECT * "
+                            + "FROM details"
+                            + "WHERE evt_entrance=1 AND evt_tea=0 AND grade='" + grade + "'");
+                    DefaultTableModel model = (DefaultTableModel) jTable1.getModel();
+                    model.setRowCount(0);
+                    while (rs.next()) {
+                        Object[] row = {rs.getString("camp_id"),
+                            rs.getString("first_name") + " " + rs.getString("last_name"),
+                            rs.getString("grade")};
+                        model.addRow(row);
+                    }
+                    con.close();
+                } catch (SQLException ex) {
+                }
+            } else if (!jCheckBox1.isSelected() && !jCheckBox2.isSelected()) {
                 java.sql.Connection con = GravityExplore22.DBConnection.connect();
                 try {
                     java.sql.Statement stmt = (java.sql.Statement) con.createStatement();
