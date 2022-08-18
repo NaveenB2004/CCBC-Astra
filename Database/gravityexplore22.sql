@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Generation Time: Aug 18, 2022 at 02:32 PM
+-- Generation Time: Aug 18, 2022 at 05:59 PM
 -- Server version: 10.4.24-MariaDB
 -- PHP Version: 8.1.6
 
@@ -57,16 +57,15 @@ CREATE TABLE `details` (
   `whatsapp` int(9) DEFAULT NULL,
   `payment` int(6) NOT NULL,
   `evt_entrance` int(1) NOT NULL,
-  `evt_tea` int(1) NOT NULL,
-  `evt_baj` int(1) NOT NULL
+  `evt_tea` int(1) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
 
 --
 -- Dumping data for table `details`
 --
 
-INSERT INTO `details` (`id`, `camp_id`, `first_name`, `last_name`, `birth_date`, `grade`, `contact`, `guardian_name`, `guardian_contact`, `whatsapp`, `payment`, `evt_entrance`, `evt_tea`, `evt_baj`) VALUES
-(8, 80595, 'Naveen', 'Balasooriya', '2004-06-17', 12, 779935421, 'Naveen Balasooriya', 779935421, 779935421, 1000, 0, 0, 0);
+INSERT INTO `details` (`id`, `camp_id`, `first_name`, `last_name`, `birth_date`, `grade`, `contact`, `guardian_name`, `guardian_contact`, `whatsapp`, `payment`, `evt_entrance`, `evt_tea`) VALUES
+(8, 80595, 'Naveen', 'Balasooriya', '2004-06-17', 12, 779935421, 'Naveen Balasooriya', 779935421, 779935421, 1000, 0, 0);
 
 -- --------------------------------------------------------
 
