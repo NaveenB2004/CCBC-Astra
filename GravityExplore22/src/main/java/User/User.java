@@ -136,6 +136,9 @@ public class User extends javax.swing.JFrame {
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
 
+        entrancerad = new javax.swing.ButtonGroup();
+        bajrad = new javax.swing.ButtonGroup();
+        tearad = new javax.swing.ButtonGroup();
         jPanel2 = new javax.swing.JPanel();
         jLabel1 = new javax.swing.JLabel();
         jLabel2 = new javax.swing.JLabel();
@@ -175,7 +178,7 @@ public class User extends javax.swing.JFrame {
         b2 = new javax.swing.JButton();
         jPanel7 = new javax.swing.JPanel();
         jLabel19 = new javax.swing.JLabel();
-        jTextField1 = new javax.swing.JTextField();
+        campid = new javax.swing.JTextField();
         jButton3 = new javax.swing.JButton();
         jPanel8 = new javax.swing.JPanel();
         jLabel20 = new javax.swing.JLabel();
@@ -377,11 +380,23 @@ public class User extends javax.swing.JFrame {
 
         jPanel4.setBorder(javax.swing.BorderFactory.createTitledBorder("Entrance Marking"));
 
+        entrancerad.add(r1);
         r1.setText("Yes");
+        r1.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                r1ActionPerformed(evt);
+            }
+        });
 
+        entrancerad.add(r2);
         r2.setText("No");
 
         b1.setText("Update");
+        b1.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                b1ActionPerformed(evt);
+            }
+        });
 
         javax.swing.GroupLayout jPanel4Layout = new javax.swing.GroupLayout(jPanel4);
         jPanel4.setLayout(jPanel4Layout);
@@ -409,11 +424,18 @@ public class User extends javax.swing.JFrame {
 
         jPanel6.setBorder(javax.swing.BorderFactory.createTitledBorder("Baj Ceremony Marking"));
 
+        bajrad.add(r5);
         r5.setText("Yes");
 
+        bajrad.add(r6);
         r6.setText("No");
 
         b3.setText("Update");
+        b3.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                b3ActionPerformed(evt);
+            }
+        });
 
         javax.swing.GroupLayout jPanel6Layout = new javax.swing.GroupLayout(jPanel6);
         jPanel6.setLayout(jPanel6Layout);
@@ -441,11 +463,18 @@ public class User extends javax.swing.JFrame {
 
         jPanel5.setBorder(javax.swing.BorderFactory.createTitledBorder("Tea Time Marking"));
 
+        tearad.add(r3);
         r3.setText("Yes");
 
+        tearad.add(r4);
         r4.setText("No");
 
         b2.setText("Update");
+        b2.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                b2ActionPerformed(evt);
+            }
+        });
 
         javax.swing.GroupLayout jPanel5Layout = new javax.swing.GroupLayout(jPanel5);
         jPanel5.setLayout(jPanel5Layout);
@@ -476,10 +505,20 @@ public class User extends javax.swing.JFrame {
         jLabel19.setFont(new java.awt.Font("Simplified Arabic", 0, 14)); // NOI18N
         jLabel19.setText("Enter Camp ID :");
 
-        jTextField1.setFont(new java.awt.Font("Simplified Arabic", 0, 14)); // NOI18N
+        campid.setFont(new java.awt.Font("Simplified Arabic", 0, 14)); // NOI18N
+        campid.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                campidActionPerformed(evt);
+            }
+        });
 
         jButton3.setFont(new java.awt.Font("Simplified Arabic", 0, 14)); // NOI18N
         jButton3.setText("Search");
+        jButton3.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jButton3ActionPerformed(evt);
+            }
+        });
 
         jPanel8.setBorder(new javax.swing.border.LineBorder(new java.awt.Color(0, 0, 0), 1, true));
 
@@ -534,7 +573,7 @@ public class User extends javax.swing.JFrame {
                     .addGroup(jPanel7Layout.createSequentialGroup()
                         .addComponent(jLabel19)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                        .addComponent(jTextField1)
+                        .addComponent(campid)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                         .addComponent(jButton3, javax.swing.GroupLayout.PREFERRED_SIZE, 135, javax.swing.GroupLayout.PREFERRED_SIZE)))
                 .addContainerGap())
@@ -545,7 +584,7 @@ public class User extends javax.swing.JFrame {
                 .addContainerGap()
                 .addGroup(jPanel7Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jLabel19)
-                    .addComponent(jTextField1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(campid, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(jButton3))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                 .addComponent(jPanel8, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
@@ -559,6 +598,11 @@ public class User extends javax.swing.JFrame {
         colorshow.setFocusable(false);
 
         jButton4.setText("Reset");
+        jButton4.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jButton4ActionPerformed(evt);
+            }
+        });
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
@@ -665,8 +709,185 @@ public class User extends javax.swing.JFrame {
                 com1[a1].setEnabled(true);
             }
         }
-
+        jButton3ActionPerformed(evt);
     }//GEN-LAST:event_jButton2ActionPerformed
+
+    private void jButton3ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton3ActionPerformed
+        // TODO add your handling code here:
+        String campidn = campid.getText();
+        com.mysql.jdbc.Connection con = GravityExplore22.DBConnection.connect();
+        try {
+            com.mysql.jdbc.Statement stmt = (com.mysql.jdbc.Statement) con.createStatement();
+            ResultSet rs = stmt.executeQuery("SELECT * "
+                    + "FROM details "
+                    + "WHERE camp_id='" + campidn + "'");
+
+            while (rs.next()) {
+                String firstname = rs.getString("first_name");
+                String lastname = rs.getString("last_name");
+                jLabel22.setText(firstname + " " + lastname);
+                jLabel23.setText(rs.getString("grade"));
+
+                String entrance = rs.getString("evt_entrance");
+                String tea = rs.getString("evt_tea");
+                String baj = rs.getString("evt_baj");
+
+                if (entrance == "0") {
+                    r1.setSelected(true);
+                } else {
+                    r2.setSelected(true);
+                }
+                if (tea == "0") {
+                    r4.setSelected(true);
+                } else {
+                    r3.setSelected(true);
+                }
+                if (baj == "0") {
+                    r6.setSelected(true);
+                } else {
+                    r5.setSelected(true);
+                }
+            }
+            con.close();
+        } catch (SQLException ex) {
+        }
+    }//GEN-LAST:event_jButton3ActionPerformed
+
+    private void campidActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_campidActionPerformed
+        // TODO add your handling code here:
+        jButton3ActionPerformed(evt);
+    }//GEN-LAST:event_campidActionPerformed
+
+    private void r1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_r1ActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_r1ActionPerformed
+
+    private void jButton4ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton4ActionPerformed
+        // TODO add your handling code here:
+        campid.setText("");
+        jLabel22.setText("---");
+        jLabel23.setText("---");
+        r1.setSelected(false);
+        r2.setSelected(false);
+        r3.setSelected(false);
+        r4.setSelected(false);
+        r5.setSelected(false);
+        r6.setSelected(false);
+    }//GEN-LAST:event_jButton4ActionPerformed
+
+    private void b1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_b1ActionPerformed
+        // TODO add your handling code here:
+        String campidn = campid.getText();
+        if (r1.isSelected()) {
+            Connection con = GravityExplore22.DBConnection.connect();
+            try {
+                Statement stmt = (Statement) con.createStatement();
+                ResultSet rs = stmt.executeQuery("SELECT id "
+                        + "FROM details "
+                        + "WHERE camp_id='" + campidn + "'");
+                while (rs.next()) {
+                    String idn = rs.getString("id");
+                    stmt.executeUpdate("INSERT INTO details (evt_entrance)"
+                            + " VALUES (1) WHERE id='" + idn + "'");
+                }
+                con.close();
+            } catch (SQLException ex) {
+            }
+        } else if (r2.isSelected()) {
+            Connection con = GravityExplore22.DBConnection.connect();
+            try {
+                Statement stmt = (Statement) con.createStatement();
+                ResultSet rs = stmt.executeQuery("SELECT id "
+                        + "FROM details "
+                        + "WHERE camp_id='" + campidn + "'");
+                while (rs.next()) {
+                    String idn = rs.getString("id");
+                    stmt.executeUpdate("INSERT INTO details (evt_entrance)"
+                            + " VALUES (0) WHERE id='" + idn + "'");
+                }
+                con.close();
+            } catch (SQLException ex) {
+            }
+        }
+        datagrab();
+        disablepanels();
+    }//GEN-LAST:event_b1ActionPerformed
+
+    private void b2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_b2ActionPerformed
+        // TODO add your handling code here:
+        String campidn = campid.getText();
+        if (r3.isSelected()) {
+            Connection con = GravityExplore22.DBConnection.connect();
+            try {
+                Statement stmt = (Statement) con.createStatement();
+                ResultSet rs = stmt.executeQuery("SELECT id "
+                        + "FROM details "
+                        + "WHERE camp_id='" + campidn + "'");
+                while (rs.next()) {
+                    String idn = rs.getString("id");
+                    stmt.executeUpdate("INSERT INTO details (evt_entrance)"
+                            + " VALUES (1) WHERE id='" + idn + "'");
+                }
+                con.close();
+            } catch (SQLException ex) {
+            }
+        } else if (r4.isSelected()) {
+            Connection con = GravityExplore22.DBConnection.connect();
+            try {
+                Statement stmt = (Statement) con.createStatement();
+                ResultSet rs = stmt.executeQuery("SELECT id "
+                        + "FROM details "
+                        + "WHERE camp_id='" + campidn + "'");
+                while (rs.next()) {
+                    String idn = rs.getString("id");
+                    stmt.executeUpdate("INSERT INTO details (evt_entrance)"
+                            + " VALUES (0) WHERE id='" + idn + "'");
+                }
+                con.close();
+            } catch (SQLException ex) {
+            }
+        }
+        datagrab();
+        disablepanels();
+    }//GEN-LAST:event_b2ActionPerformed
+
+    private void b3ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_b3ActionPerformed
+        // TODO add your handling code here:
+        String campidn = campid.getText();
+        if (r5.isSelected()) {
+            Connection con = GravityExplore22.DBConnection.connect();
+            try {
+                Statement stmt = (Statement) con.createStatement();
+                ResultSet rs = stmt.executeQuery("SELECT id "
+                        + "FROM details "
+                        + "WHERE camp_id='" + campidn + "'");
+                while (rs.next()) {
+                    String idn = rs.getString("id");
+                    stmt.executeUpdate("INSERT INTO details (evt_entrance)"
+                            + " VALUES (1) WHERE id='" + idn + "'");
+                }
+                con.close();
+            } catch (SQLException ex) {
+            }
+        } else if (r6.isSelected()) {
+            Connection con = GravityExplore22.DBConnection.connect();
+            try {
+                Statement stmt = (Statement) con.createStatement();
+                ResultSet rs = stmt.executeQuery("SELECT id "
+                        + "FROM details "
+                        + "WHERE camp_id='" + campidn + "'");
+                while (rs.next()) {
+                    String idn = rs.getString("id");
+                    stmt.executeUpdate("INSERT INTO details (evt_entrance)"
+                            + " VALUES (0) WHERE id='" + idn + "'");
+                }
+                con.close();
+            } catch (SQLException ex) {
+            }
+        }
+        datagrab();
+        disablepanels();
+    }//GEN-LAST:event_b3ActionPerformed
 
     /**
      * @param args the command line arguments
@@ -707,7 +928,10 @@ public class User extends javax.swing.JFrame {
     private javax.swing.JButton b1;
     private javax.swing.JButton b2;
     private javax.swing.JButton b3;
+    private javax.swing.ButtonGroup bajrad;
+    private javax.swing.JTextField campid;
     private javax.swing.JTextField colorshow;
+    private javax.swing.ButtonGroup entrancerad;
     private javax.swing.JButton jButton1;
     private javax.swing.JButton jButton2;
     private javax.swing.JButton jButton3;
@@ -746,12 +970,12 @@ public class User extends javax.swing.JFrame {
     private javax.swing.JPanel jPanel6;
     private javax.swing.JPanel jPanel7;
     private javax.swing.JPanel jPanel8;
-    private javax.swing.JTextField jTextField1;
     private javax.swing.JRadioButton r1;
     private javax.swing.JRadioButton r2;
     private javax.swing.JRadioButton r3;
     private javax.swing.JRadioButton r4;
     private javax.swing.JRadioButton r5;
     private javax.swing.JRadioButton r6;
+    private javax.swing.ButtonGroup tearad;
     // End of variables declaration//GEN-END:variables
 }
