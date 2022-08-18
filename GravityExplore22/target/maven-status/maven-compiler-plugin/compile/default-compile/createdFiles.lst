@@ -14,6 +14,7 @@ GravityExplore22\Login$3.class
 User\EntranceMarking$1.class
 User\User$2.class
 Admin\Admin$38.class
+User\EntranceMarking$3.class
 Admin\Admin$9.class
 GravityExplore22\Welcome$1.class
 User\User$3.class
@@ -28,6 +29,7 @@ Admin\Admin$26.class
 Admin\Admin$20.class
 GravityExplore22\About.class
 Admin\Admin.class
+User\User$6.class
 Admin\Admin$18.class
 Admin\Admin$23.class
 User\User$4.class
@@ -43,6 +45,7 @@ GravityExplore22\Welcome.class
 GravityExplore22\Welcome$2.class
 GravityExplore22\About$2.class
 Admin\Admin$4.class
+User\MemberDetails.class
 User\User.class
 Admin\Admin$28.class
 Admin\Admin$2.class
@@ -64,7 +67,9 @@ GravityExplore22\DBConnection.class
 GravityExplore22\Welcome$3.class
 GravityExplore22\About$1.class
 User\BajCeremonyMarking$1.class
+User\EntranceMarking$2.class
 GravityExplore22\Login$2.class
+User\MemberDetails$1.class
 Admin\Advanced$2.class
 Admin\Admin$13.class
 Admin\Admin$33.class

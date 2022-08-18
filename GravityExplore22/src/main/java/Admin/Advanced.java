@@ -10,6 +10,7 @@ import java.awt.Color;
 import java.awt.Toolkit;
 import java.sql.ResultSet;
 import java.sql.SQLException;
+import javax.swing.JFrame;
 import javax.swing.JOptionPane;
 
 /**
@@ -122,6 +123,9 @@ public class Advanced extends javax.swing.JFrame {
 
         jPanel2.setBorder(javax.swing.BorderFactory.createTitledBorder(null, "Danger Zone :", javax.swing.border.TitledBorder.DEFAULT_JUSTIFICATION, javax.swing.border.TitledBorder.DEFAULT_POSITION, new java.awt.Font("Consolas", 0, 12), new java.awt.Color(255, 0, 51))); // NOI18N
 
+        jButton1.setBackground(new java.awt.Color(153, 0, 0));
+        jButton1.setFont(new java.awt.Font("Arial", 1, 12)); // NOI18N
+        jButton1.setForeground(new java.awt.Color(255, 255, 255));
         jButton1.setText("Remove All Members");
         jButton1.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -237,22 +241,28 @@ public class Advanced extends javax.swing.JFrame {
         int deleteitem = JOptionPane.showConfirmDialog(null, "Confirm to delete All Members!",
                 "Warning", JOptionPane.YES_NO_OPTION);
         if (deleteitem == JOptionPane.YES_OPTION) {
+            JFrame f1 = new JFrame();
+            String confirm = JOptionPane.showInputDialog(f1, "Type the following sentence to continue:\n"
+                    + "Delete All Members!");
+            if (confirm == "Delete All Members!") {
+                com.mysql.jdbc.Connection con = GravityExplore22.DBConnection.connect();
+                try {
+                    com.mysql.jdbc.Statement stmt = (com.mysql.jdbc.Statement) con.createStatement();
+                    ResultSet rs = stmt.executeQuery("SELECT * "
+                            + "FROM details");
+                    while (rs.next()) {
 
-            com.mysql.jdbc.Connection con = GravityExplore22.DBConnection.connect();
-            try {
-                com.mysql.jdbc.Statement stmt = (com.mysql.jdbc.Statement) con.createStatement();
-                ResultSet rs = stmt.executeQuery("SELECT * "
-                        + "FROM details");
-                while (rs.next()) {
-
-                    stmt.executeUpdate("DELETE FROM details");
+                        stmt.executeUpdate("DELETE FROM details");
+                    }
+                    con.close();
+                } catch (SQLException ex) {
                 }
-                con.close();
-            } catch (SQLException ex) {
+                connectioncheck();
+                getmemberdetails();
+                JOptionPane.showMessageDialog(this, "All Members Deleted!");
+            } else {
+                JOptionPane.showMessageDialog(this, "Invalid Input!");
             }
-            connectioncheck();
-            getmemberdetails();
-            JOptionPane.showMessageDialog(this, "All Members Deleted!");
         } else {
         }
     }//GEN-LAST:event_jButton1ActionPerformed
