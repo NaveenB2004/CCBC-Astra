@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Generation Time: Aug 17, 2022 at 11:41 PM
+-- Generation Time: Aug 18, 2022 at 02:32 PM
 -- Server version: 10.4.24-MariaDB
 -- PHP Version: 8.1.6
 
@@ -55,31 +55,18 @@ CREATE TABLE `details` (
   `guardian_name` varchar(40) NOT NULL,
   `guardian_contact` int(9) NOT NULL,
   `whatsapp` int(9) DEFAULT NULL,
-  `payment` int(6) NOT NULL
+  `payment` int(6) NOT NULL,
+  `evt_entrance` int(1) NOT NULL,
+  `evt_tea` int(1) NOT NULL,
+  `evt_baj` int(1) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
 
 --
 -- Dumping data for table `details`
 --
 
-INSERT INTO `details` (`id`, `camp_id`, `first_name`, `last_name`, `birth_date`, `grade`, `contact`, `guardian_name`, `guardian_contact`, `whatsapp`, `payment`) VALUES
-(2, 35153, 'Naveen', 'Balasooriya', '2004-06-17', 8, 779935421, 'Naveen Balasooriya', 779935421, 779935421, 1000),
-(5, 47874, 'Anupama', 'Balasooriya', '2004-06-17', 11, 779935421, 'Naveen Balasooriya', 779935421, 779935421, 999),
-(6, 52501, 'Naveen', 'Balasooriya', '2004-06-17', 8, 779935421, 'Naveen Balasooriya', 779935421, 779935421, 1000),
-(7, 75724, 'Anupama', 'Efdg', '2004-06-17', 11, 779935421, 'Naveen Balasooriya', 779935421, 779935421, 999);
-
--- --------------------------------------------------------
-
---
--- Table structure for table `events`
---
-
-CREATE TABLE `events` (
-  `id` int(11) NOT NULL,
-  `student_id` int(11) NOT NULL,
-  `entrance` int(1) DEFAULT NULL,
-  `tea` int(1) DEFAULT NULL
-) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
+INSERT INTO `details` (`id`, `camp_id`, `first_name`, `last_name`, `birth_date`, `grade`, `contact`, `guardian_name`, `guardian_contact`, `whatsapp`, `payment`, `evt_entrance`, `evt_tea`, `evt_baj`) VALUES
+(8, 80595, 'Naveen', 'Balasooriya', '2004-06-17', 12, 779935421, 'Naveen Balasooriya', 779935421, 779935421, 1000, 0, 0, 0);
 
 -- --------------------------------------------------------
 
@@ -100,7 +87,7 @@ CREATE TABLE `login` (
 --
 
 INSERT INTO `login` (`id`, `user_name`, `password`, `type`, `last_login`) VALUES
-(1, 'admin', 'admin', 'Admin', '2022-08-18 00:54:46'),
+(1, 'admin', 'admin', 'Admin', '2022-08-18 03:25:52'),
 (2, 'user', 'user', 'Moderator', '2022-08-15 12:35:49');
 
 --
@@ -111,12 +98,6 @@ INSERT INTO `login` (`id`, `user_name`, `password`, `type`, `last_login`) VALUES
 -- Indexes for table `details`
 --
 ALTER TABLE `details`
-  ADD PRIMARY KEY (`id`);
-
---
--- Indexes for table `events`
---
-ALTER TABLE `events`
   ADD PRIMARY KEY (`id`);
 
 --
@@ -133,29 +114,13 @@ ALTER TABLE `login`
 -- AUTO_INCREMENT for table `details`
 --
 ALTER TABLE `details`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=8;
-
---
--- AUTO_INCREMENT for table `events`
---
-ALTER TABLE `events`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=9;
 
 --
 -- AUTO_INCREMENT for table `login`
 --
 ALTER TABLE `login`
   MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=3;
-
---
--- Constraints for dumped tables
---
-
---
--- Constraints for table `events`
---
-ALTER TABLE `events`
-  ADD CONSTRAINT `events_ibfk_1` FOREIGN KEY (`id`) REFERENCES `details` (`id`) ON DELETE CASCADE ON UPDATE CASCADE;
 COMMIT;
 
 /*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;
