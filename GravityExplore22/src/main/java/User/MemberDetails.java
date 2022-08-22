@@ -9,6 +9,7 @@ import java.sql.Connection;
 import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.sql.Statement;
+import javax.swing.JOptionPane;
 import javax.swing.table.DefaultTableModel;
 
 /**
@@ -28,6 +29,7 @@ public class MemberDetails extends javax.swing.JFrame {
     }
 
     private void dataGrab() {
+        jCheckBox2.setEnabled(false);
         Connection con = GravityExplore22.DBConnection.connect();
         try {
             Statement stmt = (Statement) con.createStatement();
@@ -490,9 +492,6 @@ public class MemberDetails extends javax.swing.JFrame {
 
     private void jButton2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton2ActionPerformed
         // TODO add your handling code here:
-        jButton3ActionPerformed(evt);
-        jButton4ActionPerformed(evt);
-
         String searchid = jTextField1.getText();
 
         Connection con = GravityExplore22.DBConnection.connect();
@@ -504,9 +503,9 @@ public class MemberDetails extends javax.swing.JFrame {
             model.setRowCount(0);
             while (rs.next()) {
                 Object[] row = {rs.getString("camp_id"),
-                    rs.getString("first_name") + " " + rs.getString("last_name")};
+                    rs.getString("first_name") + " " + rs.getString("last_name"),
+                    rs.getString("grade")};
                 model.addRow(row);
-
             }
             con.close();
         } catch (SQLException ex) {
@@ -565,14 +564,13 @@ public class MemberDetails extends javax.swing.JFrame {
         jLabel21.setText("---");
         jLabel22.setText("---");
         jLabel23.setText("---");
+        dataGrab();
     }//GEN-LAST:event_jButton4ActionPerformed
 
     private void jButton6ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton6ActionPerformed
         // TODO add your handling code here:
         jTextField1.setText("");
         dataGrab();
-        jButton3ActionPerformed(evt);
-        jButton4ActionPerformed(evt);
     }//GEN-LAST:event_jButton6ActionPerformed
 
     private void jButton3ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton3ActionPerformed
@@ -589,7 +587,7 @@ public class MemberDetails extends javax.swing.JFrame {
         // TODO add your handling code here:
         String grade = jComboBox1.getSelectedItem().toString();
         if (grade == "Please Select...") {
-
+            JOptionPane.showMessageDialog(this, "Please select grade!");
         } else if (grade == "Any") {
             if (jCheckBox1.isSelected() && jCheckBox2.isSelected()) {
                 java.sql.Connection con = GravityExplore22.DBConnection.connect();
@@ -627,7 +625,7 @@ public class MemberDetails extends javax.swing.JFrame {
                     con.close();
                 } catch (SQLException ex) {
                 }
-            } else if (!jCheckBox1.isSelected() && !jCheckBox2.isSelected()) {
+            } else if (!jCheckBox1.isSelected()) {
                 java.sql.Connection con = GravityExplore22.DBConnection.connect();
                 try {
                     java.sql.Statement stmt = (java.sql.Statement) con.createStatement();
@@ -654,7 +652,8 @@ public class MemberDetails extends javax.swing.JFrame {
                     java.sql.Statement stmt = (java.sql.Statement) con.createStatement();
                     ResultSet rs = stmt.executeQuery("SELECT * "
                             + "FROM details"
-                            + "WHERE evt_entrance=1 AND evt_tea=1 AND grade='" + grade + "'");
+                            + "WHERE evt_entrance=1 AND evt_tea=1 AND "
+                            + "grade='" + grade + "'");
                     DefaultTableModel model = (DefaultTableModel) jTable1.getModel();
                     model.setRowCount(0);
                     while (rs.next()) {
@@ -672,7 +671,8 @@ public class MemberDetails extends javax.swing.JFrame {
                     java.sql.Statement stmt = (java.sql.Statement) con.createStatement();
                     ResultSet rs = stmt.executeQuery("SELECT * "
                             + "FROM details"
-                            + "WHERE evt_entrance=1 AND evt_tea=0 AND grade='" + grade + "'");
+                            + "WHERE evt_entrance=1 AND evt_tea=0 AND "
+                            + "grade='" + grade + "'");
                     DefaultTableModel model = (DefaultTableModel) jTable1.getModel();
                     model.setRowCount(0);
                     while (rs.next()) {
@@ -684,13 +684,14 @@ public class MemberDetails extends javax.swing.JFrame {
                     con.close();
                 } catch (SQLException ex) {
                 }
-            } else if (!jCheckBox1.isSelected() && !jCheckBox2.isSelected()) {
+            } else if (!jCheckBox1.isSelected()) {
                 java.sql.Connection con = GravityExplore22.DBConnection.connect();
                 try {
                     java.sql.Statement stmt = (java.sql.Statement) con.createStatement();
                     ResultSet rs = stmt.executeQuery("SELECT * "
                             + "FROM details"
-                            + "WHERE evt_entrance=1 AND evt_tea=0 AND grade='" + grade + "'");
+                            + "WHERE evt_entrance=0 AND evt_tea=0 AND"
+                            + " grade='" + grade + "'");
                     DefaultTableModel model = (DefaultTableModel) jTable1.getModel();
                     model.setRowCount(0);
                     while (rs.next()) {
@@ -703,6 +704,7 @@ public class MemberDetails extends javax.swing.JFrame {
                 } catch (SQLException ex) {
                 }
             }
+
         }
     }//GEN-LAST:event_jButton1ActionPerformed
 

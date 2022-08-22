@@ -852,10 +852,12 @@ public class Admin extends javax.swing.JFrame {
             com.mysql.jdbc.Statement stmt = (com.mysql.jdbc.Statement) con.createStatement();
             stmt.executeUpdate("INSERT INTO details (camp_id, "
                     + "first_name,last_name,birth_date,grade,contact,guardian_name, "
-                    + "guardian_contact,whatsapp,payment) VALUES ('" + campidgen + "', "
+                    + "guardian_contact,whatsapp,payment,evt_entrance,evt_tea) "
+                    + "VALUES ('" + campidgen + "', "
                     + "'" + fnamen + "','" + lnamen + "','" + bdaten + "', "
                     + "'" + graden + "','" + phonen + "','" + gnamen + "', "
-                    + "'" + gphonen + "','" + whatsappn + "','" + paymentn + "')");
+                    + "'" + gphonen + "','" + whatsappn + "','" + paymentn + "', "
+                    + "'0','0')");
             gatefullname.setText(fnamen + " " + lnamen);
             gateid.setText(campidgen);
             autoDataGrab();
@@ -864,7 +866,7 @@ public class Admin extends javax.swing.JFrame {
             con.close();
         } catch (SQLException ex) {
         }
-        
+
     }//GEN-LAST:event_jButton1ActionPerformed
 
     private void jButton2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton2ActionPerformed
