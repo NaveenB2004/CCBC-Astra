@@ -844,29 +844,39 @@ public class Admin extends javax.swing.JFrame {
         String whatsappn = whatsapp.getText();
         String paymentn = payment.getText();
 
-        Faker faker = new Faker();
-        String campidgen = faker.number().digits(5);
-
         com.mysql.jdbc.Connection con = GravityExplore22.DBConnection.connect();
         try {
-            com.mysql.jdbc.Statement stmt = (com.mysql.jdbc.Statement) con.createStatement();
-            stmt.executeUpdate("INSERT INTO details (camp_id, "
-                    + "first_name,last_name,birth_date,grade,contact,guardian_name, "
-                    + "guardian_contact,whatsapp,payment,evt_entrance,evt_tea) "
-                    + "VALUES ('" + campidgen + "', "
-                    + "'" + fnamen + "','" + lnamen + "','" + bdaten + "', "
-                    + "'" + graden + "','" + phonen + "','" + gnamen + "', "
-                    + "'" + gphonen + "','" + whatsappn + "','" + paymentn + "', "
-                    + "'0','0')");
-            gatefullname.setText(fnamen + " " + lnamen);
-            gateid.setText(campidgen);
-            autoDataGrab();
-            JOptionPane.showMessageDialog(this, "New Member Added!");
-
+            Statement stmt = (Statement) con.createStatement();
+            ResultSet rs = stmt.executeQuery("SELECT camp_id "
+                    + "FROM details");
+            while (rs.next()) {
+                Faker faker = new Faker();
+                String campidgen = faker.number().digits(5);
+                if (campidgen == rs.getString("camp_id")) {
+                    rs.next();
+                } else {
+                    stmt.executeUpdate("INSERT INTO details (camp_id,first_name,"
+                            + "last_name,birth_date,grade,contact,guardian_name,"
+                            + "guardian_contact,whatsapp,payment,evt_entrance,"
+                            + "evt_tea) VALUES ('" + campidgen + "','" + fnamen + "',"
+                            + "'" + lnamen + "','" + bdaten + "','" + graden + "',"
+                            + "'" + phonen + "','" + gnamen + "','" + gphonen + "',"
+                            + "'" + whatsappn + "','" + paymentn + "','0','0')");
+                }
+                ResultSet rs2 = stmt.executeQuery("SELECT camp_id "
+                        + "FROM details");
+                while (rs2.next()) {
+                    if (campidgen == rs2.getString("campid")) {
+                        JOptionPane.showMessageDialog(this, "New member added!");
+                    } else {
+                        JOptionPane.showMessageDialog(this, "Error!");
+                    }
+                }
+            }
             con.close();
         } catch (SQLException ex) {
         }
-
+        jButton4ActionPerformed(evt);
     }//GEN-LAST:event_jButton1ActionPerformed
 
     private void jButton2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton2ActionPerformed
