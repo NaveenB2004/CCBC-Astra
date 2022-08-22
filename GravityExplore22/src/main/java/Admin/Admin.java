@@ -14,6 +14,7 @@ import java.sql.Statement;
 import java.text.SimpleDateFormat;
 import java.util.Date;
 import javax.swing.JOptionPane;
+import javax.swing.UIManager;
 import javax.swing.table.DefaultTableModel;
 
 /**
@@ -72,6 +73,18 @@ public class Admin extends javax.swing.JFrame {
             con.close();
         } catch (SQLException ex) {
         }
+    }
+
+    private void buttononoff() {
+        v1.setBackground(null);
+        v2.setBackground(null);
+        v3.setBackground(null);
+        v4.setBackground(null);
+        v5.setBackground(null);
+        v6.setBackground(null);
+        v7.setBackground(null);
+        v8.setBackground(null);
+        v9.setBackground(null);
     }
 
     /**
@@ -821,6 +834,7 @@ public class Admin extends javax.swing.JFrame {
         sbyname.setText("---");
         sbygrade.setSelectedIndex(0);
         hiddencampid.setText("");
+        buttononoff();
         autoDataGrab();
     }//GEN-LAST:event_jButton4ActionPerformed
 
@@ -862,15 +876,7 @@ public class Admin extends javax.swing.JFrame {
                             + "'" + lnamen + "','" + bdaten + "','" + graden + "',"
                             + "'" + phonen + "','" + gnamen + "','" + gphonen + "',"
                             + "'" + whatsappn + "','" + paymentn + "','0','0')");
-                }
-                ResultSet rs2 = stmt.executeQuery("SELECT camp_id "
-                        + "FROM details");
-                while (rs2.next()) {
-                    if (campidgen == rs2.getString("campid")) {
-                        JOptionPane.showMessageDialog(this, "New member added!");
-                    } else {
-                        JOptionPane.showMessageDialog(this, "Error!");
-                    }
+                    JOptionPane.showMessageDialog(this, "New Member Added!");
                 }
             }
             con.close();
@@ -917,9 +923,8 @@ public class Admin extends javax.swing.JFrame {
                     gatefullname.setText(rs2.getString("first_name")
                             + " " + rs2.getString("last_name"));
                     gateid.setText(rs2.getString("camp_id"));
-                    System.out.println("ok2!");
                 }
-                autoDataGrab();
+                jButton4ActionPerformed(evt);
                 JOptionPane.showMessageDialog(this, "Member details updated!");
             }
             con.close();
