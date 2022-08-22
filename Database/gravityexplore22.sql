@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Generation Time: Aug 18, 2022 at 05:59 PM
+-- Generation Time: Aug 22, 2022 at 07:13 PM
 -- Server version: 10.4.24-MariaDB
 -- PHP Version: 8.1.6
 
@@ -65,7 +65,9 @@ CREATE TABLE `details` (
 --
 
 INSERT INTO `details` (`id`, `camp_id`, `first_name`, `last_name`, `birth_date`, `grade`, `contact`, `guardian_name`, `guardian_contact`, `whatsapp`, `payment`, `evt_entrance`, `evt_tea`) VALUES
-(8, 80595, 'Naveen', 'Balasooriya', '2004-06-17', 12, 779935421, 'Naveen Balasooriya', 779935421, 779935421, 1000, 0, 0);
+(1, 34242, 'Anupama', 'Balasooriya', '2022-08-26', 11, 779935421, 'Anupama Balasooriya', 779935421, 779935421, 1000, 1, 1),
+(8, 80595, 'Naveen', 'Balasooriya', '2004-06-17', 7, 779935421, 'Naveen Balasooriya', 779935421, 779935421, 1000, 0, 0),
+(9, 37794, 'Roronoa', 'Zoro', '2004-06-17', 10, 779935421, 'Naveen Balasooriya', 779935421, 779935421, 1000, 0, 0);
 
 -- --------------------------------------------------------
 
@@ -86,8 +88,8 @@ CREATE TABLE `login` (
 --
 
 INSERT INTO `login` (`id`, `user_name`, `password`, `type`, `last_login`) VALUES
-(1, 'admin', 'admin', 'Admin', '2022-08-18 03:25:52'),
-(2, 'user', 'user', 'Moderator', '2022-08-15 12:35:49');
+(1, 'admin', 'admin', 'Admin', '2022-08-22 22:21:12'),
+(2, 'user', 'user', 'Moderator', '2022-08-18 23:15:10');
 
 --
 -- Indexes for dumped tables
@@ -113,7 +115,7 @@ ALTER TABLE `login`
 -- AUTO_INCREMENT for table `details`
 --
 ALTER TABLE `details`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=9;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=10;
 
 --
 -- AUTO_INCREMENT for table `login`
