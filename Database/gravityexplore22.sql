@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Generation Time: Aug 22, 2022 at 07:13 PM
+-- Generation Time: Aug 23, 2022 at 08:06 AM
 -- Server version: 10.4.24-MariaDB
 -- PHP Version: 8.1.6
 
@@ -66,8 +66,10 @@ CREATE TABLE `details` (
 
 INSERT INTO `details` (`id`, `camp_id`, `first_name`, `last_name`, `birth_date`, `grade`, `contact`, `guardian_name`, `guardian_contact`, `whatsapp`, `payment`, `evt_entrance`, `evt_tea`) VALUES
 (1, 34242, 'Anupama', 'Balasooriya', '2022-08-26', 11, 779935421, 'Anupama Balasooriya', 779935421, 779935421, 1000, 1, 1),
-(8, 80595, 'Naveen', 'Balasooriya', '2004-06-17', 7, 779935421, 'Naveen Balasooriya', 779935421, 779935421, 1000, 0, 0),
-(9, 37794, 'Roronoa', 'Zoro', '2004-06-17', 10, 779935421, 'Naveen Balasooriya', 779935421, 779935421, 1000, 0, 0);
+(8, 80595, 'Naveen', 'Balasooriya', '2004-06-17', 7, 779935421, 'Naveen Balasooriya', 779935421, 779935421, 1000, 1, 0),
+(9, 37794, 'Roronoa', 'Zoro', '2004-06-17', 10, 779935421, 'Naveen Balasooriya', 779935421, 779935421, 1000, 0, 0),
+(10, 35663, 'Edward', 'Teach', '2004-06-17', 10, 779935421, 'Naveen Balasooriya', 779935421, 779935421, 1000, 1, 1),
+(11, 28748, 'Asada', 'Shino', '2004-06-17', 10, 779935421, 'Naveen Balasooriya', 779935421, 779935421, 1000, 0, 0);
 
 -- --------------------------------------------------------
 
@@ -88,8 +90,8 @@ CREATE TABLE `login` (
 --
 
 INSERT INTO `login` (`id`, `user_name`, `password`, `type`, `last_login`) VALUES
-(1, 'admin', 'admin', 'Admin', '2022-08-22 22:21:12'),
-(2, 'user', 'user', 'Moderator', '2022-08-18 23:15:10');
+(1, 'admin', 'admin', 'Admin', '2022-08-22 23:11:03'),
+(2, 'user', 'user', 'Moderator', '2022-08-22 23:11:21');
 
 --
 -- Indexes for dumped tables
@@ -115,7 +117,7 @@ ALTER TABLE `login`
 -- AUTO_INCREMENT for table `details`
 --
 ALTER TABLE `details`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=10;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=12;
 
 --
 -- AUTO_INCREMENT for table `login`
