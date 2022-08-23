@@ -5,18 +5,21 @@
 package User;
 
 import com.itextpdf.text.Document;
-import com.itextpdf.text.Image;
+import com.itextpdf.text.FontFactory;
+import com.itextpdf.text.PageSize;
 import com.itextpdf.text.Paragraph;
 import com.itextpdf.text.Phrase;
 import com.itextpdf.text.pdf.PdfPCell;
 import com.itextpdf.text.pdf.PdfPTable;
 import com.itextpdf.text.pdf.PdfWriter;
 import java.awt.Toolkit;
+import java.io.File;
 import java.io.FileOutputStream;
 import java.sql.Connection;
 import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.sql.Statement;
+import javax.swing.JOptionPane;
 import javax.swing.table.DefaultTableModel;
 
 /**
@@ -680,74 +683,98 @@ public class MemberDetails extends javax.swing.JFrame {
     private void jButton7ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton7ActionPerformed
         // TODO add your handling code here:
         try {
-            
-        
-        String filename = "";
-        Document document = new Document();
-        PdfWriter.getInstance(document, new FileOutputStream(filename));
-        
-        document.open();
-        
-        
-        document.add(new Paragraph("Gravity Exploration Camp 2022"));
-        document.add(new Paragraph("Members' Details"));
-        document.add(new Paragraph(" "));
-        document.add(new Paragraph(" "));
-        
-        
-        
-        Connection con = GravityExplore22.DBConnection.connect();
+
+            String desktopPath = System.getProperty("user.home") + File.separator + "Desktop";
+
+            String filename = desktopPath + "\\Gravity Members.pdf";
+            Document document = new Document(PageSize.A4, 0f, 0f, 0f, 0f);
+            float fntSizetitle, fntsize, fntsizetab;
+            fntSizetitle = 20f;
+            fntsize = 10f;
+            fntsizetab = 11f;
+            PdfWriter.getInstance(document, new FileOutputStream(filename));
+
+            document.open();
+
+            document.add(new Paragraph("   Gravity Exploration Camp 2022",
+                    FontFactory.getFont(FontFactory.TIMES, fntSizetitle)));
+            document.add(new Paragraph("   Members' Details",
+                    FontFactory.getFont(FontFactory.TIMES, fntSizetitle)));
+            document.add(new Paragraph(" "));
+            document.add(new Paragraph(" "));
+
+            Connection con = GravityExplore22.DBConnection.connect();
             try {
                 Statement stmt = (Statement) con.createStatement();
                 ResultSet rs = stmt.executeQuery("SELECT * FROM details");
                 PdfPTable table = new PdfPTable(8);
-                    PdfPCell c1 = new PdfPCell(new Phrase("No."));
-                    table.addCell(c1);
-                    c1 = new PdfPCell(new Phrase("Camp ID"));
-                    table.addCell(c1);
-                    c1 = new PdfPCell(new Phrase("First Name"));
-                    table.addCell(c1);
-                    c1 = new PdfPCell(new Phrase("Last Name"));
-                    table.addCell(c1);
-                    c1 = new PdfPCell(new Phrase("Grade"));
-                    table.addCell(c1);
-                    c1 = new PdfPCell(new Phrase("Guardian"));
-                    table.addCell(c1);
-                    c1 = new PdfPCell(new Phrase("Contact"));
-                    table.addCell(c1);
-                    c1 = new PdfPCell(new Phrase("Entrance"));
-                    table.addCell(c1);
-                    table.setHeaderRows(1);
-                    int x = 0;
+                PdfPCell c1 = new PdfPCell(new Phrase("No.",
+                        FontFactory.getFont(FontFactory.TIMES_ROMAN, fntsizetab)));
+                table.addCell(c1);
+                c1 = new PdfPCell(new Phrase("Camp ID",
+                        FontFactory.getFont(FontFactory.TIMES_ROMAN, fntsizetab)));
+                table.addCell(c1);
+                c1 = new PdfPCell(new Phrase("First Name",
+                        FontFactory.getFont(FontFactory.TIMES_ROMAN, fntsizetab)));
+                table.addCell(c1);
+                c1 = new PdfPCell(new Phrase("Last Name",
+                        FontFactory.getFont(FontFactory.TIMES_ROMAN, fntsizetab)));
+                table.addCell(c1);
+                c1 = new PdfPCell(new Phrase("Grade",
+                        FontFactory.getFont(FontFactory.TIMES_ROMAN, fntsizetab)));
+                table.addCell(c1);
+                c1 = new PdfPCell(new Phrase("Guardian",
+                        FontFactory.getFont(FontFactory.TIMES_ROMAN, fntsizetab)));
+                table.addCell(c1);
+                c1 = new PdfPCell(new Phrase("Contact",
+                        FontFactory.getFont(FontFactory.TIMES_ROMAN, fntsizetab)));
+                table.addCell(c1);
+                c1 = new PdfPCell(new Phrase("Entrance",
+                        FontFactory.getFont(FontFactory.TIMES_ROMAN, fntsizetab)));
+                table.addCell(c1);
+                table.setHeaderRows(1);
+                int x = 0;
                 while (rs.next()) {
                     x = x + 1;
-                    pdfx.setText(""+x);
-                    String aaa = pdfx.getText();
-                    table.addCell(aaa);
-                    table.addCell(rs.getString("camp_id"));
-                    table.addCell(rs.getString("first_name"));
-                    table.addCell(rs.getString("last_name"));
-                    table.addCell(rs.getString("grade"));
-                    table.addCell(rs.getString("guardian_name"));
-                    table.addCell(rs.getString("guardian_contact"));
-                    table.addCell(rs.getString("evt_entrance"));
+                    pdfx.setText("" + x);
+                    String count = pdfx.getText();
+                    PdfPCell c2 = new PdfPCell();
+                    c2 = new PdfPCell(new Phrase(count,
+                            FontFactory.getFont(FontFactory.COURIER, fntsize)));
+                    table.addCell(c2);
+                    c2 = new PdfPCell(new Phrase(rs.getString("camp_id"),
+                            FontFactory.getFont(FontFactory.COURIER, fntsize)));
+                    table.addCell(c2);
+                    c2 = new PdfPCell(new Phrase(rs.getString("first_name"),
+                            FontFactory.getFont(FontFactory.COURIER, fntsize)));
+                    table.addCell(c2);
+                    c2 = new PdfPCell(new Phrase(rs.getString("last_name"),
+                            FontFactory.getFont(FontFactory.COURIER, fntsize)));
+                    table.addCell(c2);
+                    c2 = new PdfPCell(new Phrase(rs.getString("grade"),
+                            FontFactory.getFont(FontFactory.COURIER, fntsize)));
+                    table.addCell(c2);
+                    c2 = new PdfPCell(new Phrase(rs.getString("guardian_name"),
+                            FontFactory.getFont(FontFactory.COURIER, fntsize)));
+                    table.addCell(c2);
+                    c2 = new PdfPCell(new Phrase(rs.getString("guardian_contact"),
+                            FontFactory.getFont(FontFactory.COURIER, fntsize)));
+                    table.addCell(c2);
+                    c2 = new PdfPCell(new Phrase(rs.getString("evt_entrance"),
+                            FontFactory.getFont(FontFactory.COURIER, fntsize)));
+                    table.addCell(c2);
                 }
                 document.add(table);
                 con.close();
             } catch (SQLException ex) {
                 System.out.println(ex);
             }
-        
-        
-        
-        
-        
-        
-        document.close();
-        
-        
+
+            document.close();
+            JOptionPane.showMessageDialog(this, "Document Created!\n" 
+                    + desktopPath + "\n>Gravity Members.pdf");
         } catch (Exception e) {
-            System.out.println(e);
+            JOptionPane.showMessageDialog(this, e);
         }
     }//GEN-LAST:event_jButton7ActionPerformed
 
