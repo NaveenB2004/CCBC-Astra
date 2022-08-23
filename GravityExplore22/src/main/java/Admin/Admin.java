@@ -876,7 +876,7 @@ public class Admin extends javax.swing.JFrame {
                             + "'" + lnamen + "','" + bdaten + "','" + graden + "',"
                             + "'" + phonen + "','" + gnamen + "','" + gphonen + "',"
                             + "'" + whatsappn + "','" + paymentn + "','0','0')");
-                    gatefullname.setText(fname + " " + lname);
+                    gatefullname.setText(fnamen + " " + lnamen);
                     gateid.setText(campidgen);
                     JOptionPane.showMessageDialog(this, "New Member Added!");
                 }
