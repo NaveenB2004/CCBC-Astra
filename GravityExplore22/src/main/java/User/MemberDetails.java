@@ -4,7 +4,15 @@
  */
 package User;
 
+import com.itextpdf.text.Document;
+import com.itextpdf.text.Image;
+import com.itextpdf.text.Paragraph;
+import com.itextpdf.text.Phrase;
+import com.itextpdf.text.pdf.PdfPCell;
+import com.itextpdf.text.pdf.PdfPTable;
+import com.itextpdf.text.pdf.PdfWriter;
 import java.awt.Toolkit;
+import java.io.FileOutputStream;
 import java.sql.Connection;
 import java.sql.ResultSet;
 import java.sql.SQLException;
@@ -72,6 +80,7 @@ public class MemberDetails extends javax.swing.JFrame {
 
         emok = new javax.swing.JLabel();
         tmok = new javax.swing.JLabel();
+        pdfx = new javax.swing.JLabel();
         jScrollPane1 = new javax.swing.JScrollPane();
         jTable1 = new javax.swing.JTable();
         jPanel1 = new javax.swing.JPanel();
@@ -114,10 +123,13 @@ public class MemberDetails extends javax.swing.JFrame {
         jLabel26 = new javax.swing.JLabel();
         jLabel27 = new javax.swing.JLabel();
         jLabel29 = new javax.swing.JLabel();
+        jButton7 = new javax.swing.JButton();
 
         emok.setText("jLabel4");
 
         tmok.setText("jLabel25");
+
+        pdfx.setText("jLabel4");
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
         setTitle("Member Details");
@@ -451,6 +463,13 @@ public class MemberDetails extends javax.swing.JFrame {
                 .addContainerGap())
         );
 
+        jButton7.setText("Generate Document (.pdf)");
+        jButton7.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jButton7ActionPerformed(evt);
+            }
+        });
+
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
         layout.setHorizontalGroup(
@@ -464,7 +483,8 @@ public class MemberDetails extends javax.swing.JFrame {
                     .addComponent(jPanel2, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                     .addComponent(jPanel3, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                     .addComponent(jButton5, javax.swing.GroupLayout.Alignment.TRAILING)
-                    .addComponent(jPanel4, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                    .addComponent(jPanel4, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                    .addComponent(jButton7, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
                 .addContainerGap())
         );
         layout.setVerticalGroup(
@@ -481,7 +501,9 @@ public class MemberDetails extends javax.swing.JFrame {
                         .addComponent(jPanel3, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                         .addComponent(jPanel4, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 82, Short.MAX_VALUE)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                        .addComponent(jButton7, javax.swing.GroupLayout.PREFERRED_SIZE, 30, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 40, Short.MAX_VALUE)
                         .addComponent(jButton5)))
                 .addContainerGap())
         );
@@ -655,6 +677,80 @@ public class MemberDetails extends javax.swing.JFrame {
         }
     }//GEN-LAST:event_jCheckBox1ActionPerformed
 
+    private void jButton7ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton7ActionPerformed
+        // TODO add your handling code here:
+        try {
+            
+        
+        String filename = "";
+        Document document = new Document();
+        PdfWriter.getInstance(document, new FileOutputStream(filename));
+        
+        document.open();
+        
+        
+        document.add(new Paragraph("Gravity Exploration Camp 2022"));
+        document.add(new Paragraph("Members' Details"));
+        document.add(new Paragraph(" "));
+        document.add(new Paragraph(" "));
+        
+        
+        
+        Connection con = GravityExplore22.DBConnection.connect();
+            try {
+                Statement stmt = (Statement) con.createStatement();
+                ResultSet rs = stmt.executeQuery("SELECT * FROM details");
+                PdfPTable table = new PdfPTable(8);
+                    PdfPCell c1 = new PdfPCell(new Phrase("No."));
+                    table.addCell(c1);
+                    c1 = new PdfPCell(new Phrase("Camp ID"));
+                    table.addCell(c1);
+                    c1 = new PdfPCell(new Phrase("First Name"));
+                    table.addCell(c1);
+                    c1 = new PdfPCell(new Phrase("Last Name"));
+                    table.addCell(c1);
+                    c1 = new PdfPCell(new Phrase("Grade"));
+                    table.addCell(c1);
+                    c1 = new PdfPCell(new Phrase("Guardian"));
+                    table.addCell(c1);
+                    c1 = new PdfPCell(new Phrase("Contact"));
+                    table.addCell(c1);
+                    c1 = new PdfPCell(new Phrase("Entrance"));
+                    table.addCell(c1);
+                    table.setHeaderRows(1);
+                    int x = 0;
+                while (rs.next()) {
+                    x = x + 1;
+                    pdfx.setText(""+x);
+                    String aaa = pdfx.getText();
+                    table.addCell(aaa);
+                    table.addCell(rs.getString("camp_id"));
+                    table.addCell(rs.getString("first_name"));
+                    table.addCell(rs.getString("last_name"));
+                    table.addCell(rs.getString("grade"));
+                    table.addCell(rs.getString("guardian_name"));
+                    table.addCell(rs.getString("guardian_contact"));
+                    table.addCell(rs.getString("evt_entrance"));
+                }
+                document.add(table);
+                con.close();
+            } catch (SQLException ex) {
+                System.out.println(ex);
+            }
+        
+        
+        
+        
+        
+        
+        document.close();
+        
+        
+        } catch (Exception e) {
+            System.out.println(e);
+        }
+    }//GEN-LAST:event_jButton7ActionPerformed
+
     /**
      * @param args the command line arguments
      */
@@ -698,6 +794,7 @@ public class MemberDetails extends javax.swing.JFrame {
     private javax.swing.JButton jButton4;
     private javax.swing.JButton jButton5;
     private javax.swing.JButton jButton6;
+    private javax.swing.JButton jButton7;
     private javax.swing.JCheckBox jCheckBox1;
     private javax.swing.JCheckBox jCheckBox2;
     private javax.swing.JComboBox<String> jComboBox1;
@@ -734,6 +831,7 @@ public class MemberDetails extends javax.swing.JFrame {
     private javax.swing.JScrollPane jScrollPane1;
     private javax.swing.JTable jTable1;
     private javax.swing.JTextField jTextField1;
+    private javax.swing.JLabel pdfx;
     private javax.swing.JLabel tmok;
     // End of variables declaration//GEN-END:variables
 }
