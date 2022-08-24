@@ -5,10 +5,14 @@
 package GravityExplore22;
 
 import com.formdev.flatlaf.FlatDarkLaf;
+import com.formdev.flatlaf.FlatLightLaf;
 import java.awt.Dimension;
 import java.awt.Graphics;
 import java.awt.Image;
 import java.awt.Toolkit;
+import java.io.File;
+import java.io.FileNotFoundException;
+import java.util.Scanner;
 import javax.swing.ImageIcon;
 import javax.swing.JWindow;
 
@@ -49,7 +53,25 @@ public class Home extends JWindow {
 
     public static void main(String[] args) {
 
-        FlatDarkLaf.setup();
+        File myObj = new File("C:\\Windows\\Temp\\GravityTemp.ini");
+        if (myObj.exists()) {
+            try {
+                Scanner myReader = new Scanner(myObj);
+                while (myReader.hasNextLine()) {
+                    String data = myReader.nextLine();
+                    if (data.equals("Light")){
+                        FlatLightLaf.setup();
+                    } else if (data.equals("Dark")){
+                        FlatDarkLaf.setup();
+                    }
+                }
+                myReader.close();
+            } catch (FileNotFoundException e) {
+                System.out.println("An error occurred.");
+                e.printStackTrace();
+            }
+        } else {
+        }
         
         Home splash = new Home();
         try {
