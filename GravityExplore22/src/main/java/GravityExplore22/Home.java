@@ -4,6 +4,7 @@
  */
 package GravityExplore22;
 
+import com.formdev.flatlaf.FlatDarkLaf;
 import java.awt.Dimension;
 import java.awt.Graphics;
 import java.awt.Image;
@@ -48,6 +49,8 @@ public class Home extends JWindow {
 
     public static void main(String[] args) {
 
+        FlatDarkLaf.setup();
+        
         Home splash = new Home();
         try {
             // Make JWindow appear for 10 seconds before disappear
