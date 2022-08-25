@@ -81,7 +81,7 @@ public class Home extends JWindow {
         } catch (Exception e) {
             e.printStackTrace();
         }
-        
+                
         Welcome welcome = new Welcome();
         welcome.setVisible(true);
 
