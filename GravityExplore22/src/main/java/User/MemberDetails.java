@@ -176,7 +176,7 @@ public class MemberDetails extends javax.swing.JFrame {
 
         jLabel3.setText("Got Tea :");
 
-        jComboBox1.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Please Select...", "Any", "6", "7", "8", "9", "10", "11", "12", "13" }));
+        jComboBox1.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Please Select...", "Any", "4", "5", "6", "7", "8", "9", "10", "11", "12", "13" }));
 
         jCheckBox1.setText("Yes");
         jCheckBox1.addActionListener(new java.awt.event.ActionListener() {

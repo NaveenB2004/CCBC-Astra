@@ -407,7 +407,7 @@ public class Admin extends javax.swing.JFrame {
             }
         });
 
-        grade.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Please Select...", "6", "7", "8", "9", "10", "11", "12", "13" }));
+        grade.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Please Select...", "4", "5", "6", "7", "8", "9", "10", "11", "12", "13" }));
         grade.addFocusListener(new java.awt.event.FocusAdapter() {
             public void focusLost(java.awt.event.FocusEvent evt) {
                 gradeFocusLost(evt);
