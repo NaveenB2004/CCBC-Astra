@@ -36,7 +36,6 @@ public class Home extends javax.swing.JFrame {
         jLabel2 = new javax.swing.JLabel();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
-        setResizable(false);
 
         jButton1.setText("Generate");
         jButton1.addActionListener(new java.awt.event.ActionListener() {
