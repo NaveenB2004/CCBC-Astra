@@ -70,6 +70,20 @@ public class User extends javax.swing.JFrame {
         }
     }
 
+    private void clear() {
+        jLabel22.setText("---");
+        jLabel23.setText("---");
+        emok.setSelected(false);
+        exok.setSelected(false);
+        tmok.setSelected(false);
+        em.setText("0");
+        tm.setText("0");
+        ex.setText("0");
+        emt.setText("0");
+        tmt.setText("0");
+        ext.setText("0");
+    }
+
     private void datagrab() {
         java.sql.Connection con = GravityExplore22.DBConnection.connect();
         try {
@@ -348,6 +362,11 @@ public class User extends javax.swing.JFrame {
         jLabel19.setText("Enter Camp ID :");
 
         campid.setFont(new java.awt.Font("Simplified Arabic", 0, 14)); // NOI18N
+        campid.addFocusListener(new java.awt.event.FocusAdapter() {
+            public void focusGained(java.awt.event.FocusEvent evt) {
+                campidFocusGained(evt);
+            }
+        });
         campid.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 campidActionPerformed(evt);
@@ -586,7 +605,7 @@ public class User extends javax.swing.JFrame {
 
     private void jButton3ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton3ActionPerformed
         // TODO add your handling code here:
-        jButton4ActionPerformed(evt);
+        clear();
         String campidn = campid.getText();
         com.mysql.jdbc.Connection con = GravityExplore22.DBConnection.connect();
         try {
@@ -644,17 +663,7 @@ public class User extends javax.swing.JFrame {
     private void jButton4ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton4ActionPerformed
         // TODO add your handling code here:
         campid.setText("");
-        jLabel22.setText("---");
-        jLabel23.setText("---");
-        emok.setSelected(false);
-        exok.setSelected(false);
-        tmok.setSelected(false);
-        em.setText("0");
-        tm.setText("0");
-        ex.setText("0");
-        emt.setText("0");
-        tmt.setText("0");
-        ext.setText("0");
+        clear();
     }//GEN-LAST:event_jButton4ActionPerformed
 
     private void b2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_b2ActionPerformed
@@ -713,7 +722,13 @@ public class User extends javax.swing.JFrame {
         datagrab();
         autodb();
         jButton4ActionPerformed(evt);
+        clear();
     }//GEN-LAST:event_b2ActionPerformed
+
+    private void campidFocusGained(java.awt.event.FocusEvent evt) {//GEN-FIRST:event_campidFocusGained
+        // TODO add your handling code here:
+
+    }//GEN-LAST:event_campidFocusGained
 
     /**
      * @param args the command line arguments
