@@ -736,8 +736,8 @@ public class MemberDetails extends javax.swing.JFrame {
             Document document = new Document(PageSize.A4, 0f, 0f, 0f, 0f);
             float fntSizetitle, fntsize, fntsizetab;
             fntSizetitle = 20f;
-            fntsize = 10f;
-            fntsizetab = 11f;
+            fntsize = 9f;
+            fntsizetab = 10f;
             PdfWriter.getInstance(document, new FileOutputStream(filename));
 
             document.open();
@@ -844,8 +844,8 @@ public class MemberDetails extends javax.swing.JFrame {
             selectionn.setText("exit_time");
         }
 
-        if (selection.equals("Please select...")) {
-            jLabel28.setText("");
+        if (selection.equals("Please Select...")) {
+            jLabel28.setText("---");
         } else {
             Connection con = GravityExplore22.DBConnection.connect();
             try {
