@@ -753,7 +753,7 @@ public class MemberDetails extends javax.swing.JFrame {
             try {
                 Statement stmt = (Statement) con.createStatement();
                 ResultSet rs = stmt.executeQuery("SELECT * FROM details");
-                PdfPTable table = new PdfPTable(8);
+                PdfPTable table = new PdfPTable(9);
                 PdfPCell c1 = new PdfPCell(new Phrase("No.",
                         FontFactory.getFont(FontFactory.TIMES_ROMAN, fntsizetab)));
                 table.addCell(c1);
