@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Generation Time: Aug 23, 2022 at 08:06 AM
+-- Generation Time: Aug 27, 2022 at 01:33 PM
 -- Server version: 10.4.24-MariaDB
 -- PHP Version: 8.1.6
 
@@ -57,19 +57,26 @@ CREATE TABLE `details` (
   `whatsapp` int(9) DEFAULT NULL,
   `payment` int(6) NOT NULL,
   `evt_entrance` int(1) NOT NULL,
-  `evt_tea` int(1) NOT NULL
+  `evt_exit` int(1) NOT NULL,
+  `evt_tea` int(1) NOT NULL,
+  `enter_time` varchar(30) NOT NULL,
+  `exit_time` varchar(30) NOT NULL,
+  `tea_time` varchar(30) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
 
 --
 -- Dumping data for table `details`
 --
 
-INSERT INTO `details` (`id`, `camp_id`, `first_name`, `last_name`, `birth_date`, `grade`, `contact`, `guardian_name`, `guardian_contact`, `whatsapp`, `payment`, `evt_entrance`, `evt_tea`) VALUES
-(1, 34242, 'Anupama', 'Balasooriya', '2022-08-26', 11, 779935421, 'Anupama Balasooriya', 779935421, 779935421, 1000, 1, 1),
-(8, 80595, 'Naveen', 'Balasooriya', '2004-06-17', 7, 779935421, 'Naveen Balasooriya', 779935421, 779935421, 1000, 1, 0),
-(9, 37794, 'Roronoa', 'Zoro', '2004-06-17', 10, 779935421, 'Naveen Balasooriya', 779935421, 779935421, 1000, 0, 0),
-(10, 35663, 'Edward', 'Teach', '2004-06-17', 10, 779935421, 'Naveen Balasooriya', 779935421, 779935421, 1000, 1, 1),
-(11, 28748, 'Asada', 'Shino', '2004-06-17', 10, 779935421, 'Naveen Balasooriya', 779935421, 779935421, 1000, 0, 0);
+INSERT INTO `details` (`id`, `camp_id`, `first_name`, `last_name`, `birth_date`, `grade`, `contact`, `guardian_name`, `guardian_contact`, `whatsapp`, `payment`, `evt_entrance`, `evt_exit`, `evt_tea`, `enter_time`, `exit_time`, `tea_time`) VALUES
+(1, 34242, 'Anupama', 'Balasooriya', '2022-08-26', 11, 779935421, 'Anupama Balasooriya', 779935421, 779935421, 1000, 1, 0, 1, '0', '0', '0'),
+(8, 80595, 'Naveen', 'Balasooriya', '2004-06-17', 7, 779935421, 'Naveen Balasooriya', 779935421, 779935421, 1000, 1, 0, 0, '0', '0', '0'),
+(9, 37794, 'Roronoa', 'Zoro', '2004-06-17', 10, 779935421, 'Naveen Balasooriya', 779935421, 779935421, 1000, 0, 0, 0, '0', '0', '0'),
+(10, 35663, 'Edward', 'Teach', '2004-06-17', 10, 779935421, 'Naveen Balasooriya', 779935421, 779935421, 1000, 1, 0, 1, '0', '0', '0'),
+(11, 28748, 'Asada', 'Shino', '2004-06-17', 10, 779935421, 'Naveen Balasooriya', 779935421, 779935421, 1000, 0, 0, 0, '0', '0', '0'),
+(12, 83321, 'Julian', 'Balasooriya', '2022-08-26', 11, 779935421, 'Anupama Balasooriya', 779935421, 779935421, 1000, 0, 0, 0, '0', '0', '0'),
+(13, 34489, 'Julianewgr', 'Balasooriya', '2022-08-26', 11, 779935421, 'Anupama Balasooriya', 779935421, 779935421, 1000, 0, 0, 0, '0', '0', '0'),
+(14, 24887, 'dfhshsdf', 'Balasooriya', '2022-08-26', 11, 779935421, 'Anupama Balasooriya', 779935421, 779935421, 1000, 0, 0, 0, '0', '0', '0');
 
 -- --------------------------------------------------------
 
@@ -90,8 +97,8 @@ CREATE TABLE `login` (
 --
 
 INSERT INTO `login` (`id`, `user_name`, `password`, `type`, `last_login`) VALUES
-(1, 'admin', 'admin', 'Admin', '2022-08-22 23:11:03'),
-(2, 'user', 'user', 'Moderator', '2022-08-22 23:11:21');
+(1, 'admin', 'admin', 'Admin', '2022-08-24 23:16:23'),
+(2, 'user', 'user', 'Moderator', '2022-08-24 23:16:40');
 
 --
 -- Indexes for dumped tables
@@ -117,7 +124,7 @@ ALTER TABLE `login`
 -- AUTO_INCREMENT for table `details`
 --
 ALTER TABLE `details`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=12;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=15;
 
 --
 -- AUTO_INCREMENT for table `login`

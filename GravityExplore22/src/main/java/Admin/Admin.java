@@ -14,7 +14,6 @@ import java.sql.Statement;
 import java.text.SimpleDateFormat;
 import java.util.Date;
 import javax.swing.JOptionPane;
-import javax.swing.UIManager;
 import javax.swing.table.DefaultTableModel;
 
 /**
@@ -871,11 +870,13 @@ public class Admin extends javax.swing.JFrame {
                 } else {
                     stmt.executeUpdate("INSERT INTO details (camp_id,first_name,"
                             + "last_name,birth_date,grade,contact,guardian_name,"
-                            + "guardian_contact,whatsapp,payment,evt_entrance,"
-                            + "evt_tea) VALUES ('" + campidgen + "','" + fnamen + "',"
+                            + "guardian_contact,whatsapp,payment,evt_entrance,evt_exit,"
+                            + "evt_tea,enter_time,exit_time,tea_time) "
+                            + "VALUES ('" + campidgen + "','" + fnamen + "',"
                             + "'" + lnamen + "','" + bdaten + "','" + graden + "',"
                             + "'" + phonen + "','" + gnamen + "','" + gphonen + "',"
-                            + "'" + whatsappn + "','" + paymentn + "','0','0')");
+                            + "'" + whatsappn + "','" + paymentn + "',"
+                            + "'0','0','0','0','0','0')");
                     gatefullname.setText(fnamen + " " + lnamen);
                     gateid.setText(campidgen);
                     JOptionPane.showMessageDialog(this, "New Member Added!");
