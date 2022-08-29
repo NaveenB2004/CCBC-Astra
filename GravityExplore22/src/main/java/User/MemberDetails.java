@@ -176,9 +176,9 @@ public class MemberDetails extends javax.swing.JFrame {
             jTable1.getColumnModel().getColumn(0).setMinWidth(200);
             jTable1.getColumnModel().getColumn(0).setPreferredWidth(200);
             jTable1.getColumnModel().getColumn(0).setMaxWidth(200);
-            jTable1.getColumnModel().getColumn(2).setMinWidth(50);
-            jTable1.getColumnModel().getColumn(2).setPreferredWidth(50);
-            jTable1.getColumnModel().getColumn(2).setMaxWidth(50);
+            jTable1.getColumnModel().getColumn(2).setMinWidth(60);
+            jTable1.getColumnModel().getColumn(2).setPreferredWidth(60);
+            jTable1.getColumnModel().getColumn(2).setMaxWidth(60);
         }
 
         jPanel1.setBorder(javax.swing.BorderFactory.createTitledBorder("Filters"));
@@ -538,7 +538,7 @@ public class MemberDetails extends javax.swing.JFrame {
             .addGroup(layout.createSequentialGroup()
                 .addContainerGap()
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(jScrollPane1, javax.swing.GroupLayout.DEFAULT_SIZE, 729, Short.MAX_VALUE)
+                    .addComponent(jScrollPane1, javax.swing.GroupLayout.DEFAULT_SIZE, 782, Short.MAX_VALUE)
                     .addGroup(layout.createSequentialGroup()
                         .addComponent(jPanel1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
