@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Generation Time: Aug 27, 2022 at 01:33 PM
+-- Generation Time: Aug 29, 2022 at 08:33 PM
 -- Server version: 10.4.24-MariaDB
 -- PHP Version: 8.1.6
 
@@ -49,7 +49,7 @@ CREATE TABLE `details` (
   `camp_id` int(5) NOT NULL,
   `first_name` varchar(20) NOT NULL,
   `last_name` varchar(20) NOT NULL,
-  `birth_date` date NOT NULL,
+  `birth_date` date DEFAULT NULL,
   `grade` int(2) NOT NULL,
   `contact` int(9) DEFAULT NULL,
   `guardian_name` varchar(40) NOT NULL,
@@ -63,20 +63,6 @@ CREATE TABLE `details` (
   `exit_time` varchar(30) NOT NULL,
   `tea_time` varchar(30) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
-
---
--- Dumping data for table `details`
---
-
-INSERT INTO `details` (`id`, `camp_id`, `first_name`, `last_name`, `birth_date`, `grade`, `contact`, `guardian_name`, `guardian_contact`, `whatsapp`, `payment`, `evt_entrance`, `evt_exit`, `evt_tea`, `enter_time`, `exit_time`, `tea_time`) VALUES
-(1, 34242, 'Anupama', 'Balasooriya', '2022-08-26', 11, 779935421, 'Anupama Balasooriya', 779935421, 779935421, 1000, 1, 0, 1, '0', '0', '0'),
-(8, 80595, 'Naveen', 'Balasooriya', '2004-06-17', 7, 779935421, 'Naveen Balasooriya', 779935421, 779935421, 1000, 1, 0, 0, '0', '0', '0'),
-(9, 37794, 'Roronoa', 'Zoro', '2004-06-17', 10, 779935421, 'Naveen Balasooriya', 779935421, 779935421, 1000, 0, 0, 0, '0', '0', '0'),
-(10, 35663, 'Edward', 'Teach', '2004-06-17', 10, 779935421, 'Naveen Balasooriya', 779935421, 779935421, 1000, 1, 0, 1, '0', '0', '0'),
-(11, 28748, 'Asada', 'Shino', '2004-06-17', 10, 779935421, 'Naveen Balasooriya', 779935421, 779935421, 1000, 0, 0, 0, '0', '0', '0'),
-(12, 83321, 'Julian', 'Balasooriya', '2022-08-26', 11, 779935421, 'Anupama Balasooriya', 779935421, 779935421, 1000, 0, 0, 0, '0', '0', '0'),
-(13, 34489, 'Julianewgr', 'Balasooriya', '2022-08-26', 11, 779935421, 'Anupama Balasooriya', 779935421, 779935421, 1000, 0, 0, 0, '0', '0', '0'),
-(14, 24887, 'dfhshsdf', 'Balasooriya', '2022-08-26', 11, 779935421, 'Anupama Balasooriya', 779935421, 779935421, 1000, 0, 0, 0, '0', '0', '0');
 
 -- --------------------------------------------------------
 
@@ -97,8 +83,8 @@ CREATE TABLE `login` (
 --
 
 INSERT INTO `login` (`id`, `user_name`, `password`, `type`, `last_login`) VALUES
-(1, 'admin', 'admin', 'Admin', '2022-08-24 23:16:23'),
-(2, 'user', 'user', 'Moderator', '2022-08-24 23:16:40');
+(1, 'admin', 'admin', 'Admin', '2022-08-29 23:58:24'),
+(2, 'user', 'user', 'Moderator', '2022-08-27 17:56:44');
 
 --
 -- Indexes for dumped tables
@@ -124,7 +110,7 @@ ALTER TABLE `login`
 -- AUTO_INCREMENT for table `details`
 --
 ALTER TABLE `details`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=15;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=16;
 
 --
 -- AUTO_INCREMENT for table `login`

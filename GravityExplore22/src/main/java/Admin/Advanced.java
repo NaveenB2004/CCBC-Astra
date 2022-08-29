@@ -244,7 +244,7 @@ public class Advanced extends javax.swing.JFrame {
             JFrame f1 = new JFrame();
             String confirm = JOptionPane.showInputDialog(f1, "Type the following sentence to continue:\n"
                     + "Delete All Members!");
-            if (confirm == "Delete All Members!") {
+            if (confirm.equals("Delete All Members!")) {
                 com.mysql.jdbc.Connection con = GravityExplore22.DBConnection.connect();
                 try {
                     com.mysql.jdbc.Statement stmt = (com.mysql.jdbc.Statement) con.createStatement();
