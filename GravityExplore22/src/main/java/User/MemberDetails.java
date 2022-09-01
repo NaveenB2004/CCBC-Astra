@@ -875,8 +875,8 @@ public class MemberDetails extends javax.swing.JFrame {
         // TODO add your handling code here:
         if (jComboBox1.getSelectedIndex() == 0) {
             jCheckBox1.setSelected(false);
-            jCheckBox1.setSelected(false);
-            jCheckBox1.setSelected(false);
+            jCheckBox2.setSelected(false);
+            jCheckBox3.setSelected(false);
         }
     }//GEN-LAST:event_jComboBox1ActionPerformed
 
