@@ -655,7 +655,7 @@ public class Admin extends javax.swing.JFrame {
 
         jLabel17.setText("Search by Grade :");
 
-        sbygrade.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "---", "6", "7", "8", "9", "10", "11", "12", "13" }));
+        sbygrade.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "---", "4", "5", "6", "7", "8", "9", "10", "11", "12", "13" }));
         sbygrade.addFocusListener(new java.awt.event.FocusAdapter() {
             public void focusGained(java.awt.event.FocusEvent evt) {
                 sbygradeFocusGained(evt);
@@ -857,31 +857,24 @@ public class Admin extends javax.swing.JFrame {
         String whatsappn = whatsapp.getText();
         String paymentn = payment.getText();
 
+        Faker faker = new Faker();
+        String campidgen = faker.number().digits(5);
+
         com.mysql.jdbc.Connection con = GravityExplore22.DBConnection.connect();
         try {
             Statement stmt = (Statement) con.createStatement();
-            ResultSet rs = stmt.executeQuery("SELECT camp_id "
-                    + "FROM details");
-            while (rs.next()) {
-                Faker faker = new Faker();
-                String campidgen = faker.number().digits(5);
-                if (campidgen == rs.getString("camp_id")) {
-                    rs.next();
-                } else {
-                    stmt.executeUpdate("INSERT INTO details (camp_id,first_name,"
-                            + "last_name,birth_date,grade,contact,guardian_name,"
-                            + "guardian_contact,whatsapp,payment,evt_entrance,evt_exit,"
-                            + "evt_tea,enter_time,exit_time,tea_time) "
-                            + "VALUES ('" + campidgen + "','" + fnamen + "',"
-                            + "'" + lnamen + "','" + bdaten + "','" + graden + "',"
-                            + "'" + phonen + "','" + gnamen + "','" + gphonen + "',"
-                            + "'" + whatsappn + "','" + paymentn + "',"
-                            + "'0','0','0','0','0','0')");
-                    gatefullname.setText(fnamen + " " + lnamen);
-                    gateid.setText(campidgen);
-                    JOptionPane.showMessageDialog(this, "New Member Added!");
-                }
-            }
+            stmt.executeUpdate("INSERT INTO details (camp_id,first_name,"
+                    + "last_name,birth_date,grade,contact,guardian_name,"
+                    + "guardian_contact,whatsapp,payment,evt_entrance,evt_exit,"
+                    + "evt_tea,enter_time,exit_time,tea_time) "
+                    + "VALUES ('" + campidgen + "','" + fnamen + "',"
+                    + "'" + lnamen + "','" + bdaten + "','" + graden + "',"
+                    + "'" + phonen + "','" + gnamen + "','" + gphonen + "',"
+                    + "'" + whatsappn + "','" + paymentn + "', "
+                    + "'0','0','0','0','0','0')");
+            gatefullname.setText(fnamen + " " + lnamen);
+            gateid.setText(campidgen);
+            JOptionPane.showMessageDialog(this, "New Member Added!");
             con.close();
         } catch (SQLException ex) {
         }

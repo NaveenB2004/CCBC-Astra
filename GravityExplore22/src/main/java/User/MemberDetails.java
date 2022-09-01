@@ -190,6 +190,11 @@ public class MemberDetails extends javax.swing.JFrame {
         jLabel3.setText("Got Tea :");
 
         jComboBox1.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Please Select...", "Any", "4", "5", "6", "7", "8", "9", "10", "11", "12", "13" }));
+        jComboBox1.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jComboBox1ActionPerformed(evt);
+            }
+        });
 
         jCheckBox1.setText("Yes");
         jCheckBox1.addActionListener(new java.awt.event.ActionListener() {
@@ -679,8 +684,8 @@ public class MemberDetails extends javax.swing.JFrame {
         }
 
         if (combo.equals("Please Select...")) {
+            jComboBox1ActionPerformed(evt);
             dataGrab();
-            jCheckBox1.setSelected(false);
         } else if (combo.equals("Any")) {
             Connection con = GravityExplore22.DBConnection.connect();
             try {
@@ -706,8 +711,9 @@ public class MemberDetails extends javax.swing.JFrame {
                 Statement stmt = (Statement) con.createStatement();
                 ResultSet rs = stmt.executeQuery("SELECT * FROM details "
                         + "WHERE evt_entrance='" + emok.getText() + "' AND "
-                        + "evt_exit='" + exok.getText() + "' AND"
-                        + "evt_tea='" + tmok.getText() + "' AND grade='" + combo + "'");
+                        + "evt_exit='" + exok.getText() + "' AND "
+                        + "evt_tea='" + tmok.getText() + "' AND "
+                        + "grade='" + combo + "'");
                 DefaultTableModel model = (DefaultTableModel) jTable1.getModel();
                 model.setRowCount(0);
                 while (rs.next()) {
@@ -864,6 +870,15 @@ public class MemberDetails extends javax.swing.JFrame {
             }
         }
     }//GEN-LAST:event_jComboBox2ActionPerformed
+
+    private void jComboBox1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jComboBox1ActionPerformed
+        // TODO add your handling code here:
+        if (jComboBox1.getSelectedIndex() == 0) {
+            jCheckBox1.setSelected(false);
+            jCheckBox1.setSelected(false);
+            jCheckBox1.setSelected(false);
+        }
+    }//GEN-LAST:event_jComboBox1ActionPerformed
 
     /**
      * @param args the command line arguments
