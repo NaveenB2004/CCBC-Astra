@@ -104,7 +104,7 @@ public class User extends javax.swing.JFrame {
                             + "FROM details WHERE evt_tea=1");
                     while (rs3.next()) {
                         int count3 = rs3.getInt(1);
-                        int count23 = count - count3;
+                        int count23 = count2 - count3;
                         jLabel7.setText("" + count3);
                         jLabel14.setText("" + count23);
                         ResultSet rs4 = stmt.executeQuery("SELECT SUM(payment)"
