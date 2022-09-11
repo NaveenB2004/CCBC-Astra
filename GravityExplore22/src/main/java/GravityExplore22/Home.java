@@ -15,15 +15,15 @@ import java.io.FileNotFoundException;
 import java.util.Scanner;
 import javax.swing.ImageIcon;
 import javax.swing.JWindow;
+import javax.swing.UIManager;
 
 /**
  *
  * @author NaveenBalasooriya
  */
 public class Home extends JWindow {
-    
-    //add all images to src/main/resources/pkg(imgs)/
 
+    //add all images to src/main/resources/pkg(imgs)/
     Image splashScreen;
     ImageIcon imageIcon;
 
@@ -59,10 +59,16 @@ public class Home extends JWindow {
                 Scanner myReader = new Scanner(myObj);
                 while (myReader.hasNextLine()) {
                     String data = myReader.nextLine();
-                    if (data.equals("Light")){
+                    if (data.equals("Light")) {
                         FlatLightLaf.setup();
-                    } else if (data.equals("Dark")){
+                    } else if (data.equals("Dark")) {
                         FlatDarkLaf.setup();
+                    } else {
+                        try {
+                            UIManager.setLookAndFeel(
+                                    UIManager.getSystemLookAndFeelClassName());
+                        } catch (Exception e) {
+                        }
                     }
                 }
                 myReader.close();
@@ -71,17 +77,22 @@ public class Home extends JWindow {
                 e.printStackTrace();
             }
         } else {
+            try {
+                UIManager.setLookAndFeel(
+                        UIManager.getSystemLookAndFeelClassName());
+            } catch (Exception e) {
+            }
         }
-        
+
         Home splash = new Home();
         try {
-            // Make JWindow appear for 10 seconds before disappear
+            // Make JWindow appear for 3 seconds before disappear
             Thread.sleep(3000);
             splash.dispose();
         } catch (Exception e) {
             e.printStackTrace();
         }
-                
+
         Welcome welcome = new Welcome();
         welcome.setVisible(true);
 
